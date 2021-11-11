@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView{
+            VStack{
+                Text("Hello")
+                
+            }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
+                    ToolbarItem(placement: .navigationBarTrailing, content: {Button {
+                        //TODO: Setup plus button
+                    } label: {
+                        Text("+")
+                    }
+                    })
+                }
+                .navigationTitle(Text("Spelling"))
+        }
     }
 }
 
@@ -19,3 +33,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
