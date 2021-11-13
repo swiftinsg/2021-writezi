@@ -8,12 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var searchText = ""
     var body: some View {
         NavigationView{
             VStack{
-                Text("Hello")
+                // Search bar
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search", text: $searchText)
+                    }
+                    .foregroundColor(.gray)
+                    .padding(13)
+                }
+                .frame(height: 40)
+                    .cornerRadius(13)
+                    .padding()
                 
             }
+            // Navigation Bar Items
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
                     ToolbarItem(placement: .navigationBarTrailing, content: {Button {
@@ -24,6 +39,7 @@ struct ContentView: View {
                     })
                 }
                 .navigationTitle(Text("Spelling"))
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
     }
 }

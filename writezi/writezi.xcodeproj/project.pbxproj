@@ -11,6 +11,7 @@
 		3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA7273BA943006F6AF1 /* ContentView.swift */; };
 		3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */; };
 		3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */; };
+		3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB46A7C273F55E4008AE14E /* Spelling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		3A6E5EA7273BA943006F6AF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3AB46A7C273F55E4008AE14E /* Spelling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spelling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */,
 				3A6E5EA7273BA943006F6AF1 /* ContentView.swift */,
+				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
 				3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */,
 				3A6E5EAB273BA948006F6AF1 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
+				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
