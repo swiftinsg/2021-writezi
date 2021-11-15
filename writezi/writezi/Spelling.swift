@@ -7,17 +7,11 @@
 
 import Foundation
 
-struct SpellingListInfo{
-    var lastScore: Int?
-    var totalCount: Int
-    var spellingList: [SpellingList]
+struct SpellingListInfo {
+    var lastScore: Int? = nil
+    var totalCount = 0
+    var spellingList = [SpellingList]()
     var name: String
-    init(name: String){
-        self.lastScore = nil
-        self.totalCount = 0
-        self.spellingList = []
-        self.name = name
-    }
     mutating func updateList(updatedList: [SpellingList]){
         self.spellingList = updatedList
         self.totalCount = updatedList.count

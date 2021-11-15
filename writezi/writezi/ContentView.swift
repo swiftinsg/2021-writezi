@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var searchText = ""
+    @State public var searchText = ""
+    @State public var spellingList:[SpellingListInfo] = [SpellingListInfo(name: "HALLO")]
     var body: some View {
         NavigationView{
             VStack{
@@ -26,7 +27,6 @@ struct ContentView: View {
                 .frame(height: 40)
                     .cornerRadius(13)
                     .padding()
-                
             }
             // Navigation Bar Items
                 .toolbar {
