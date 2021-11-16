@@ -17,7 +17,7 @@ func detectedLanguage(for string: String) -> String? {
 }
 
 struct NewSpellingView: View {
-    @State public var newSpellingList = SpellingList(name: "")
+    @State public var newSpellingList = SpellingList(spellingList: [SpellingWord()], name: "")
     @State public var spellingList : [SpellingList]
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
@@ -34,14 +34,14 @@ struct NewSpellingView: View {
                     Text("Words")
                     Spacer()
                     Button{
-                        newSpellingList.spellingList.append("")
+                        newSpellingList.spellingList.append(SpellingWord())
                     } label : {
                         Image(systemName: "plus")
                     }
                     
                 }){
-                    ForEach($newSpellingList.spellingList, id: \.self) { $spellingList in
-                        TextField( "Word", text: $spellingList)
+                    ForEach($newSpellingList.spellingList) { $spellingList in
+                        TextField("Word", text: $spellingList.word)
                     }
                 }
             }
@@ -50,12 +50,12 @@ struct NewSpellingView: View {
                 Button {
                     //validate the list
                     for i in 0..<newSpellingList.spellingList.count{
-                        if(newSpellingList.spellingList[i] == ""){
+                        if(newSpellingList.spellingList[i].word == ""){
                             //Alert
                             alertToShow = "The \(i+1)th word is empty!"
                             alertPresented = true
                         }
-                        print(detectedLanguage(for: newSpellingList.spellingList[i])!)
+                        print(detectedLanguage(for: newSpellingList.spellingList[i].word)!)
                     }
                     
                     if (newSpellingList.name != ""){

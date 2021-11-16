@@ -10,9 +10,13 @@ import Foundation
 struct SpellingList :Identifiable {
     var lastEdited: Date = Date()
     var created: Date = Date()
-    var spellingList = [String]()
+    var spellingList = [SpellingWord]()
     var name: String
     var pastResult: Result? = nil
+    var id = UUID()
+}
+struct SpellingWord :Identifiable{
+    var word:String = ""
     var id = UUID()
 }
 struct Result {

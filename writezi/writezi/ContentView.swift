@@ -33,29 +33,35 @@ struct ContentView: View {
                 .padding()
                 
                 //Spelling List
-                List{
-                    //List itself
-                    ForEach(spellingList){ list in
-                        VStack(alignment: .leading){
+                List (spellingList){ list in
+                    NavigationLink (destination: AttemptView(spellingList: list)){
+                        VStack(alignment: .leading) {
                             Text(list.name)
-                                .font(.bold(.title)())
-                            Text("Last Score:  \(list.pastResult == nil ? "N.A." : "\(list.pastResult!.score)") ")
+                                .bold()
+                            if list.pastResult?.dateOfResult == nil {
+                                Text("No test done yet")
+                            } else {
+                                Text("Last test date: \(list.pastResult?.dateOfResult ?? Date())")
+                            }
                         }
                     }
-                    .onDelete { list in
-                        spellingList.remove(atOffsets: list)
-                    }
+                    //                        VStack(alignment: .leading){
+                    //                            Text(list.name)
+                    //                                .font(.bold(.title)())
+                    //                            Text("Last Score:  \(list.pastResult == nil ? "N.A." : "\(list.pastResult!.score)") ")
+                    //                        }
                 }
+                
             }
             // Navigation Bar Items
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button {
-                    newSpellingList = true
-                } label: {
-                    Image(systemName: "plus")
-                }
+                        newSpellingList = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 })
             }
             .navigationTitle(Text("Spelling"))
