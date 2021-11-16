@@ -13,6 +13,7 @@ struct AttemptView: View {
     
     var body: some View {
         VStack{
+            Text("Last Updated: \(spellingList.lastEdited.formatted(date: .long, time: .shortened))")
             List{
                 Section (header: Text("Words")){
                     ForEach (spellingList.spellingList){ list in
