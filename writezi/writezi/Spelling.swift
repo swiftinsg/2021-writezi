@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct SpellingList {
+struct SpellingList :Identifiable {
     var lastEdited: Date = Date()
     var created: Date = Date()
     var spellingList = [String]()
     var name: String
     var pastResult: Result? = nil
+    var id = UUID()
 }
 
 struct Result {
-    var scoree: Int? = nil
+    var score: Int
     var results: [String: Bool]
     var dateOfResult = Date()
 }
