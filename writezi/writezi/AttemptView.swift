@@ -12,7 +12,39 @@ struct AttemptView: View {
     var spellingList: SpellingList
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            List{
+                Section (header: Text("Words")){
+                    ForEach (spellingList.spellingList){ list in
+                        NavigationLink (destination:
+                                            WordMeaningView(word: list.word)                ){
+                            VStack(alignment: .leading) {
+                                Text(list.word)
+                            }
+                        }
+                    }
+                }
+            }
+            Spacer()
+            Button("Start"){
+                
+            }
+            .tint(.green)
+            .padding()
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+            .frame(width: UIScreen.main.bounds.size.width * 0.8)
+            Button("View Previous Attempt"){
+                
+            }
+            .tint(.blue)
+            .padding()
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+            .frame(width: UIScreen.main.bounds.size.width * 0.8)
+        }
+        .background(Color(.systemGroupedBackground))
+        .navigationTitle(spellingList.name)
     }
 }
 

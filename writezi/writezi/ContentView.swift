@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State public var searchText = ""
-    @State public var spellingList:[SpellingList] = [SpellingList(name: "HALLO"), SpellingList(name: "HALLO")]
+    @State public var spellingList:[SpellingList] = [SpellingList(name: "HALLO"), SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO")]
     @State public var newSpellingList = false
     var count = 0
     
@@ -45,11 +45,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                    //                        VStack(alignment: .leading){
-                    //                            Text(list.name)
-                    //                                .font(.bold(.title)())
-                    //                            Text("Last Score:  \(list.pastResult == nil ? "N.A." : "\(list.pastResult!.score)") ")
-                    //                        }
                 }
                 
             }
