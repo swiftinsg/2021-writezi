@@ -10,8 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     @State public var searchText = ""
-    @State public var spellingList:[SpellingList] = [SpellingList(name: "HALLO")]
+    @State public var spellingList:[SpellingList] = [SpellingList(name: "HALLO"), SpellingList(name: "HALLO")]
     @State public var newSpellingList = false
+    var count = 0
     
     var body: some View {
         NavigationView{
@@ -30,11 +31,27 @@ struct ContentView: View {
                 .frame(height: 40)
                 .cornerRadius(13)
                 .padding()
+                
+                //Spelling List
+                List{
+                    //List itself
+                    ForEach(spellingList){ list in
+                        VStack(alignment: .leading){
+                            Text(list.name)
+                                .font(.bold(.title)())
+                            Text("Last Score:  \(list.pastResult == nil ? "N.A." : "\(list.pastResult!.score)") ")
+                        }
+                    }
+                    .onDelete { list in
+                        spellingList.remove(atOffsets: list)
+                    }
+                }
             }
             // Navigation Bar Items
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
-                ToolbarItem(placement: .navigationBarTrailing, content: {Button {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button {
                     newSpellingList = true
                 } label: {
                     Image(systemName: "plus")
