@@ -15,7 +15,6 @@ struct SpellingList :Identifiable {
     var pastResult: Result? = nil
     var id = UUID()
 }
-
 struct Result {
     var score: Int
     var results: [String: Bool]

@@ -61,7 +61,7 @@ struct ContentView: View {
             .navigationTitle(Text("Spelling"))
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .sheet(isPresented: $newSpellingList){
-                NewSpellingView()
+                NewSpellingView(spellingList: spellingList)
             }
         }
     }
