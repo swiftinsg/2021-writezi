@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State public var searchText = ""
-    @State public var spellingList:[SpellingListInfo] = [SpellingListInfo(name: "HALLO")]
+    @State public var spellingList:[SpellingList] = [SpellingList(name: "HALLO")]
     @State public var newSpellingList = false
     
     var body: some View {
