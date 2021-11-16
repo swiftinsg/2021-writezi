@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0727433EA30004FEAE /* NewSpellingView.swift */; };
 		3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1E574B2742332E00FC067A /* Colours.xcassets */; };
 		3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */; };
 		3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA7273BA943006F6AF1 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26A8EB0727433EA30004FEAE /* NewSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpellingView.swift; sourceTree = "<group>"; };
 		3A1E574B2742332E00FC067A /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
 		3A6E5EA2273BA943006F6AF1 /* writezi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = writezi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeziApp.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */,
 				3A6E5EA7273BA943006F6AF1 /* ContentView.swift */,
+				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
 				3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */,
 				3A1E574B2742332E00FC067A /* Colours.xcassets */,
@@ -147,6 +150,7 @@
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
+				26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

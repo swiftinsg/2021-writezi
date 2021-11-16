@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State public var searchText = ""
     @State public var spellingList:[SpellingListInfo] = [SpellingListInfo(name: "HALLO")]
+    @State public var newSpellingList = false
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -25,21 +28,24 @@ struct ContentView: View {
                     .padding(13)
                 }
                 .frame(height: 40)
-                    .cornerRadius(13)
-                    .padding()
+                .cornerRadius(13)
+                .padding()
             }
             // Navigation Bar Items
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
-                    ToolbarItem(placement: .navigationBarTrailing, content: {Button {
-                        //TODO: Setup plus button
-                    } label: {
-                        Text("+")
-                    }
-                    })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
+                ToolbarItem(placement: .navigationBarTrailing, content: {Button {
+                    newSpellingList = true
+                } label: {
+                    Image(systemName: "plus")
                 }
-                .navigationTitle(Text("Spelling"))
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                })
+            }
+            .navigationTitle(Text("Spelling"))
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            .sheet(isPresented: $newSpellingList){
+                NewSpellingView()
+            }
         }
     }
 }
