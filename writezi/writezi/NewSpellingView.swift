@@ -49,7 +49,7 @@ struct NewSpellingView: View {
             .toolbar {
                 Button {
                     //validate the list
-                    for i in 0...newSpellingList.spellingList.count{
+                    for i in 0..<newSpellingList.spellingList.count{
                         if(newSpellingList.spellingList[i] == ""){
                             //Alert
                             alertToShow = "The \(i+1)th word is empty!"
@@ -59,6 +59,7 @@ struct NewSpellingView: View {
                     }
                     
                     if (newSpellingList.name != ""){
+                        spellingList.append(newSpellingList)
                         presentationMode.wrappedValue.dismiss()
                     } else {
                         //Alert
