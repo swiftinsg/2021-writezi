@@ -86,7 +86,7 @@ struct NewSpellingView: View {
                         }
                         
                         //check the confidence of detection
-                        if(detectedLang?.confidence["Chinese, Simplified"]??0 > 95 && detectedLang?.confidence["Chinese, Traditional"]??0 > 95){
+                        if(detectedLang?.confidence["Chinese, Simplified"] ?? 0 > 95 && detectedLang?.confidence["Chinese, Traditional"] ?? 0 > 95){
                             alertToShow = "The \(i+1)th word is not 100% Chinese!"
                             alertPresented = true
                             return
@@ -108,7 +108,7 @@ struct NewSpellingView: View {
                     }
                     
                     //check the confidence of detection
-                    if(detectedLang?.confidence["Chinese, Simplified"] ?? 0 > 95 && detectedLang?.confidence["Chinese, Traditional"]?? 0 > 95 && detectedLang?.confidence["English"]??0 > 95){
+                    if(detectedLang?.confidence["Chinese, Simplified"] ?? 0 > 95 && detectedLang?.confidence["Chinese, Traditional"] ?? 0 > 95 && detectedLang?.confidence["English"] ?? 0 > 95){
                         alertToShow = "The title is not 100% Chinese!"
                         alertPresented = true
                         return
