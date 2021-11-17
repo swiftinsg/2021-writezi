@@ -13,6 +13,7 @@ struct AttemptView: View {
     var spellingList: SpellingList
     @State private var startSpelling = false
     @State private var spellingMode:Int = 0
+    @State private var previousSpellingTest = false
     
     var body: some View {
         VStack{
@@ -21,8 +22,7 @@ struct AttemptView: View {
             List{
                 Section (header: Text("Words")){
                     ForEach (spellingList.spellingList){ list in
-                        NavigationLink (destination:
-                                            WordMeaningView(word: list.word)                ){
+                        NavigationLink (destination: WordMeaningView(word: list.word)                ){
                             VStack(alignment: .leading) {
                                 Text(list.word)
                             }
@@ -42,7 +42,7 @@ struct AttemptView: View {
             .buttonStyle(.bordered)
             .controlSize(.large)
             Button{
-                
+                previousSpellingTest = true
             }label: {
                 Text("View Previous Attempt")
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -83,6 +83,9 @@ struct AttemptView: View {
             }label: {
                 Text("Hinted Practice")
             }
+        }
+        .sheet(isPresented: $previousSpellingTest){
+            PastSpellingView()
         }
     }
 }
