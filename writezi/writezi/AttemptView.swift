@@ -54,7 +54,15 @@ struct AttemptView: View {
         }
         .background(Color(.systemGroupedBackground))
         .navigationTitle(spellingList.name)
-        
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    //Edit
+                } label: {
+                    Text("Edit")
+                }
+            })
+        }
         .confirmationDialog("Choose Mode", isPresented: $chooseSpellingMode) {
             Button{
                 startSpelling = true
