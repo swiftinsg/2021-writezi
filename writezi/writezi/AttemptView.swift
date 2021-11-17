@@ -16,7 +16,7 @@ struct AttemptView: View {
     
     var body: some View {
         VStack{
-            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode).navigationBarBackButtonHidden(true), isActive: self.$startSpelling) { EmptyView() }
+            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode, spellingList: spellingList).navigationBarBackButtonHidden(true), isActive: self.$startSpelling) { EmptyView() }
             Text("Last Updated: \(spellingList.lastEdited.formatted(date: .long, time: .shortened))")
             List{
                 Section (header: Text("Words")){
