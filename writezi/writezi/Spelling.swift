@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct SpellingList :Identifiable {
     var lastEdited: Date = Date()
@@ -23,4 +24,5 @@ struct Result {
     var score: Int
     var results: [String: Bool]
     var dateOfResult = Date()
+    var image: Image
 }
