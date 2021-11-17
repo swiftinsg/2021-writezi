@@ -48,6 +48,7 @@ struct ContentView: View {
                 }
                 
             }
+            .background(Color(.systemGroupedBackground))
             // Navigation Bar Items
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})

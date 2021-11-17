@@ -9,10 +9,14 @@ import SwiftUI
 
 struct AttemptView: View {
     
+    @State private var chooseSpellingMode = false
     var spellingList: SpellingList
+    @State private var startSpelling = false
+    @State private var spellingMode:Int = 0
     
     var body: some View {
         VStack{
+            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode).navigationBarBackButtonHidden(true), isActive: self.$startSpelling) { EmptyView() }
             Text("Last Updated: \(spellingList.lastEdited.formatted(date: .long, time: .shortened))")
             List{
                 Section (header: Text("Words")){
@@ -27,25 +31,50 @@ struct AttemptView: View {
                 }
             }
             Spacer()
-            Button("Start"){
-                
+            Button{
+                chooseSpellingMode = true
+            } label: {
+                Text("Start")
             }
+            .frame(width: UIScreen.main.bounds.size.width * 0.8)
             .tint(.green)
             .padding()
             .buttonStyle(.bordered)
             .controlSize(.large)
-            .frame(width: UIScreen.main.bounds.size.width * 0.8)
-            Button("View Previous Attempt"){
+            Button{
                 
+            }label: {
+                Text("View Previous Attempt")
             }
+            .frame(width: UIScreen.main.bounds.size.width * 0.8)
             .tint(.blue)
             .padding()
             .buttonStyle(.bordered)
             .controlSize(.large)
-            .frame(width: UIScreen.main.bounds.size.width * 0.8)
         }
         .background(Color(.systemGroupedBackground))
         .navigationTitle(spellingList.name)
+        
+        .confirmationDialog("Choose Mode", isPresented: $chooseSpellingMode) {
+            Button{
+                startSpelling = true
+                spellingMode = 1
+            }label: {
+                Text("Timed Practice")
+            }
+            Button{
+                startSpelling = true
+                spellingMode = 2
+            }label: {
+                Text("Normal Practice")
+            }
+            Button{
+                startSpelling = true
+                spellingMode = 3
+            }label: {
+                Text("Hinted Practice")
+            }
+        }
     }
 }
 

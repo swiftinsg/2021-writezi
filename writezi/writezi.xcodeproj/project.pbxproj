@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263829572744AD2000CDA75B /* SpellingTestView.swift */; };
 		26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0727433EA30004FEAE /* NewSpellingView.swift */; };
 		26A8EB0A2743D5CF0004FEAE /* AttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB092743D5CE0004FEAE /* AttemptView.swift */; };
 		26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		263829572744AD2000CDA75B /* SpellingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestView.swift; sourceTree = "<group>"; };
 		26A8EB0727433EA30004FEAE /* NewSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpellingView.swift; sourceTree = "<group>"; };
 		26A8EB092743D5CE0004FEAE /* AttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptView.swift; sourceTree = "<group>"; };
 		26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMeaningView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */,
 				3A6E5EA7273BA943006F6AF1 /* ContentView.swift */,
 				26A8EB092743D5CE0004FEAE /* AttemptView.swift */,
+				263829572744AD2000CDA75B /* SpellingTestView.swift */,
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
@@ -158,6 +161,7 @@
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
 				26A8EB0A2743D5CF0004FEAE /* AttemptView.swift in Sources */,
 				26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */,
+				263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */,
 				26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
