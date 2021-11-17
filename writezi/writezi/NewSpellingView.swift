@@ -57,14 +57,14 @@ struct NewSpellingView: View {
                             return
                         }
                         let detectedLang = detectedLanguage(for: newSpellingList.spellingList[i].word)
-                        if(detectedLang?.starts(with: "Chinese") ?? false){
+                        if(detectedLang != "Chinese, Traditional" && detectedLang != "Chinese, Simplified"){
                             alertToShow = "The \(i+1)th word is not Chinese, its in the \(String(describing: detectedLang == nil ? "Unidentified" : detectedLang!)) language!"
                             alertPresented = true
                             return
                         }
                     }
                     let detectedLang = detectedLanguage(for: newSpellingList.name)
-                    if(detectedLang?.starts(with: "Chinese") ?? false || detectedLang != "English"){
+                    if(detectedLang != "Chinese, Traditional" && detectedLang != "Chinese, Simplified" && detectedLang != "English"){
                         alertToShow = "The title is not Chinese or English, its in the \(String(describing: detectedLang == nil ? "Unidentified" : detectedLang!)) language!"
                         alertPresented = true
                         return
