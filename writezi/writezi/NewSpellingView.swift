@@ -54,10 +54,21 @@ struct NewSpellingView: View {
                             //Alert
                             alertToShow = "The \(i+1)th word is empty!"
                             alertPresented = true
+                            return
                         }
-                        print(detectedLanguage(for: newSpellingList.spellingList[i].word)!)
+                        let detectedLang = detectedLanguage(for: newSpellingList.spellingList[i].word)
+                        if(detectedLang?.starts(with: "Chinese") ?? false){
+                            alertToShow = "The \(i+1)th word is not Chinese, its in the \(String(describing: detectedLang == nil ? "Unidentified" : detectedLang!)) language!"
+                            alertPresented = true
+                            return
+                        }
                     }
-                    
+                    let detectedLang = detectedLanguage(for: newSpellingList.name)
+                    if(detectedLang?.starts(with: "Chinese") ?? false || detectedLang != "English"){
+                        alertToShow = "The title is not Chinese or English, its in the \(String(describing: detectedLang == nil ? "Unidentified" : detectedLang!)) language!"
+                        alertPresented = true
+                        return
+                    }
                     if (newSpellingList.name != ""){
                         spellingList.append(newSpellingList)
                         presentationMode.wrappedValue.dismiss()
@@ -70,7 +81,7 @@ struct NewSpellingView: View {
                     Text("Save")
                 }
                 .alert(Text(alertToShow), isPresented: $alertPresented){
-                    Button("Ok"){}
+                    Button("Ok"){alertPresented = false}
                 }
             }
         }

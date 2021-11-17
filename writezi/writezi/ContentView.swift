@@ -34,7 +34,13 @@ struct ContentView: View {
                 
                 //Spelling List
                 List{
-                    ForEach (spellingList){ list in
+                    ForEach (searchText == "" ? spellingList : spellingList.filter({ list in
+                        if(list.name.contains(searchText)) {
+                            return true
+                        } else{
+                            return false
+                        }
+                    })){ list in
                         NavigationLink (destination: AttemptView(spellingList: list)){
                             VStack(alignment: .leading) {
                                 Text(list.name)
