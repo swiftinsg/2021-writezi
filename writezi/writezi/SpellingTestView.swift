@@ -23,7 +23,7 @@ struct SpellingTestView: View {
     var body: some View {
         VStack{
             Spacer()
-            NavigationLink(destination: CheckAnswerView().navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
+            NavigationLink(destination: CheckAnswerView(spellingList: spellingList).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
             NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
             if spellingMode == 1 {
                 ZStack {

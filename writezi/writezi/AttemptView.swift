@@ -85,7 +85,7 @@ struct AttemptView: View {
             }
         }
         .sheet(isPresented: $previousSpellingTest){
-            PastSpellingView()
+            PastSpellingView(spellingList: spellingList)
         }
     }
 }

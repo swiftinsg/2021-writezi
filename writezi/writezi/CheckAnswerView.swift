@@ -9,19 +9,29 @@ import SwiftUI
 
 struct CheckAnswerView: View {
     
+    var spellingList: SpellingList
+    
     @State private var quit = false
     @State private var exit = false
+    @State private var questionNo = 0
+    @State private var finish = false
     
     var body: some View {
         NavigationView {
             VStack{
                 NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
+                NavigationLink(destination: ScoreFinalizationView(spellingList: spellingList).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
                 Spacer()
-                Text("Hello")
+                Text("\(spellingList.spellingList[questionNo].word)")
                 Spacer()
                 HStack{
                     Button{
-                        
+                        //Save data
+                        if questionNo == spellingList.spellingList.count - 1 {
+                            finish = true
+                        } else {
+                            questionNo += 1
+                        }
                     } label: {
                         Text("Wrong")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -32,7 +42,12 @@ struct CheckAnswerView: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                     Button{
-                        
+                        //Save data
+                        if questionNo == spellingList.spellingList.count - 1 {
+                            finish = true
+                        } else {
+                            questionNo += 1
+                        }
                     } label: {
                         Text("Correct")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -44,6 +59,7 @@ struct CheckAnswerView: View {
                     .controlSize(.large)
                 }
             }
+            .navigationTitle("Question \(questionNo + 1)")
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading, content: {
@@ -76,6 +92,6 @@ struct CheckAnswerView: View {
 
 struct CheckAnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckAnswerView()
+        CheckAnswerView(spellingList: SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO"))
     }
 }

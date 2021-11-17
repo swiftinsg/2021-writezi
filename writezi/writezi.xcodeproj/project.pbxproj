@@ -13,6 +13,7 @@
 		26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */; };
 		26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959F62744E77100319126 /* CheckAnswerView.swift */; };
 		26A959F9274522D400319126 /* PastSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959F8274522D400319126 /* PastSpellingView.swift */; };
+		26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959FA27452B9700319126 /* ScoreFinalizationView.swift */; };
 		3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1E574B2742332E00FC067A /* Colours.xcassets */; };
 		3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */; };
 		3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA7273BA943006F6AF1 /* ContentView.swift */; };
@@ -28,6 +29,7 @@
 		26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMeaningView.swift; sourceTree = "<group>"; };
 		26A959F62744E77100319126 /* CheckAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnswerView.swift; sourceTree = "<group>"; };
 		26A959F8274522D400319126 /* PastSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastSpellingView.swift; sourceTree = "<group>"; };
+		26A959FA27452B9700319126 /* ScoreFinalizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreFinalizationView.swift; sourceTree = "<group>"; };
 		3A1E574B2742332E00FC067A /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
 		3A6E5EA2273BA943006F6AF1 /* writezi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = writezi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeziApp.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				263829572744AD2000CDA75B /* SpellingTestView.swift */,
 				26A959F8274522D400319126 /* PastSpellingView.swift */,
 				26A959F62744E77100319126 /* CheckAnswerView.swift */,
+				26A959FA27452B9700319126 /* ScoreFinalizationView.swift */,
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
+				26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingView.swift in Sources */,
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
