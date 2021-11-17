@@ -46,7 +46,7 @@ struct SpellingTestView: View {
                                 }
                             }
                         }
-                    .padding()
+                        .padding(10.0)
                 }
             }
             Button{

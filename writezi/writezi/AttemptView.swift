@@ -35,16 +35,17 @@ struct AttemptView: View {
                 chooseSpellingMode = true
             } label: {
                 Text("Start")
+                    .frame(minWidth: 0, maxWidth: .infinity)
             }
             .frame(width: UIScreen.main.bounds.size.width * 0.8)
             .tint(.green)
-            .padding()
             .buttonStyle(.bordered)
             .controlSize(.large)
             Button{
                 
             }label: {
                 Text("View Previous Attempt")
+                    .frame(minWidth: 0, maxWidth: .infinity)
             }
             .frame(width: UIScreen.main.bounds.size.width * 0.8)
             .tint(.blue)
