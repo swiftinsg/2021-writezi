@@ -33,17 +33,20 @@ struct ContentView: View {
                 .padding()
                 
                 //Spelling List
-                List (spellingList){ list in
-                    NavigationLink (destination: AttemptView(spellingList: list)){
-                        VStack(alignment: .leading) {
-                            Text(list.name)
-                                .bold()
-                            if list.pastResult?.dateOfResult == nil {
-                                Text("No test done yet")
-                            } else {
-                                Text("Last test date: \(list.pastResult?.dateOfResult ?? Date())")
+                List{
+                    ForEach (spellingList){ list in
+                        NavigationLink (destination: AttemptView(spellingList: list)){
+                            VStack(alignment: .leading) {
+                                Text(list.name)
+                                    .bold()
+                                list.pastResult?.dateOfResult == nil ?
+                                Text("Not Tested Yet") :
+                                Text("Last Test Date: \(list.pastResult?.dateOfResult ?? Date())")
                             }
                         }
+                    }
+                    .onDelete { indexset in
+                        spellingList.remove(atOffsets: indexset)
                     }
                 }
                 
