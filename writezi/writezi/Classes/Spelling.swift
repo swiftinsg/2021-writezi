@@ -20,9 +20,10 @@ struct SpellingWord :Identifiable{
     var word:String = ""
     var id = UUID()
 }
+
 struct Result {
     var score: Int
-    var results: [String: Bool]
+    var results: [KeyValuePairs<String, Bool>]
     var dateOfResult = Date()
     var spellingMode: Int
     var image: Image? = nil
