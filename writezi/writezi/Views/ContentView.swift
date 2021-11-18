@@ -8,17 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State public var searchText = ""
-    @State public var spellingList:[SpellingList] = [
-        SpellingList(name: "WALLO"),
-        SpellingList(spellingList: [
-            SpellingWord(word: "你好"),
-            SpellingWord(word: "你")],
-        name: "HALLO",
-                     pastResult: Result(score: 2, results: ["家": false, "你": true, "你好": true],
-        dateOfResult: Date(),
-        spellingMode: 2))]
+    @State public var spellingList = DataManager()
     @State public var newSpellingList = false
     var count = 0
     
@@ -42,7 +33,7 @@ struct ContentView: View {
                 
                 //Spelling List
                 List{
-                    ForEach (searchText == "" ? spellingList : spellingList.filter({ list in
+                    ForEach (searchText == "" ? spellingList.lists : spellingList.lists.filter({ list in
                         if(list.name.contains(searchText)) {
                             return true
                         } else{
@@ -60,7 +51,8 @@ struct ContentView: View {
                         }
                     }
                     .onDelete { indexset in
-                        spellingList.remove(atOffsets: indexset)
+                        spellingList.lists.remove(atOffsets: indexset)
+                        spellingList.save()
                     }
                 }
                 
@@ -80,7 +72,7 @@ struct ContentView: View {
             .navigationTitle(Text("Spelling"))
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .sheet(isPresented: $newSpellingList){
-                NewSpellingView(spellingList: spellingList)
+                NewSpellingView(reference: spellingList)
             }
         }
     }

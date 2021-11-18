@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SpellingList :Identifiable {
+struct SpellingList: Identifiable, Codable {
     var lastEdited: Date = Date()
     var created: Date = Date()
     var spellingList = [SpellingWord]()
@@ -16,14 +16,15 @@ struct SpellingList :Identifiable {
     var pastResult: Result? = nil
     var id = UUID()
 }
-struct SpellingWord :Identifiable{
+
+struct SpellingWord: Identifiable, Codable{
     var word:String = ""
     var id = UUID()
 }
-struct Result {
+
+struct Result: Codable {
     var score: Int
     var results: [String: Bool]
     var dateOfResult = Date()
     var spellingMode: Int
-    var image: Image? = nil
 }

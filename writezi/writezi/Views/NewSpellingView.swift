@@ -16,7 +16,8 @@ func isAllChinese(string: String) -> Bool{
 }
 struct NewSpellingView: View {
     @State public var newSpellingList = SpellingList(spellingList: [SpellingWord()], name: "")
-    @State public var spellingList : [SpellingList]
+    @State public var spellingList = DataManager()
+    @State public var reference:DataManager?
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
     @Environment(\.presentationMode) var presentationMode
@@ -66,7 +67,9 @@ struct NewSpellingView: View {
                     }
                     
                     if (newSpellingList.name != ""){
-                        spellingList.append(newSpellingList)
+                        spellingList.lists.append(newSpellingList)
+                        spellingList.save()
+                        reference?.load()
                         presentationMode.wrappedValue.dismiss()
                     } else {
                         //Alert
@@ -88,6 +91,6 @@ struct NewSpellingView: View {
 struct NewSpellingView_Previews: PreviewProvider {
     @State private var showSheet = true
     static var previews: some View {
-        NewSpellingView(spellingList: [SpellingList]())
+        NewSpellingView()
     }
 }

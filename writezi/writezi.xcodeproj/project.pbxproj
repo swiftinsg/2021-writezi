@@ -21,6 +21,8 @@
 		3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */; };
 		3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */; };
 		3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB46A7C273F55E4008AE14E /* Spelling.swift */; };
+		3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD02DA12745ED68001B1458 /* DataManager.swift */; };
+		3AD02DA42745FB63001B1458 /* SpellingList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AD02DA32745FB63001B1458 /* SpellingList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3AB46A7C273F55E4008AE14E /* Spelling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spelling.swift; sourceTree = "<group>"; };
+		3AD02DA12745ED68001B1458 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3AD02DA32745FB63001B1458 /* SpellingList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SpellingList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
+				3AD02DA12745ED68001B1458 /* DataManager.swift */,
+				3AD02DA32745FB63001B1458 /* SpellingList.plist */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 			files = (
 				3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */,
 				3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */,
+				3AD02DA42745FB63001B1458 /* SpellingList.plist in Resources */,
 				3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
+				3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */,
 				26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingView.swift in Sources */,
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
