@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State public var searchText = ""
-    @State public var spellingList = DataManager()
+    @ObservedObject public var spellingList = DataManager()
     @State public var newSpellingList = false
     var count = 0
     
