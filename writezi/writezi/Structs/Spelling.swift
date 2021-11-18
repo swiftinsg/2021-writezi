@@ -24,7 +24,12 @@ struct SpellingWord: Identifiable, Codable{
 
 struct Result: Codable {
     var score: Int
-    var results: [String: Bool]
+    var results: [WordResult]
     var dateOfResult = Date()
     var spellingMode: Int
+}
+
+struct WordResult: Codable{
+    var word: String
+    var correct: Bool
 }
