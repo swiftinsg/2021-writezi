@@ -10,7 +10,15 @@ import SwiftUI
 struct ContentView: View {
     
     @State public var searchText = ""
-    @State public var spellingList:[SpellingList] = [SpellingList(name: "WALLO"), SpellingList(spellingList: [SpellingWord(word: "你好"), SpellingWord(word: "你")], name: "HALLO")]
+    @State public var spellingList:[SpellingList] = [
+        SpellingList(name: "WALLO"),
+        SpellingList(spellingList: [
+            SpellingWord(word: "你好"),
+            SpellingWord(word: "你")],
+        name: "HALLO",
+                     pastResult: Result(score: 2, results: ["家": false, "你": true, "你好": true],
+        dateOfResult: Date(),
+        spellingMode: 2))]
     @State public var newSpellingList = false
     var count = 0
     
@@ -47,7 +55,7 @@ struct ContentView: View {
                                     .bold()
                                 list.pastResult?.dateOfResult == nil ?
                                 Text("Not Tested Yet") :
-                                Text("Last Test Date: \(list.pastResult?.dateOfResult ?? Date())")
+                                Text("Last Test: \(list.pastResult?.dateOfResult.formatted(date: .long, time: .shortened) ?? Date().formatted(date: .long, time: .shortened))")
                             }
                         }
                     }

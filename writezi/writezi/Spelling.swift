@@ -25,5 +25,5 @@ struct Result {
     var results: [String: Bool]
     var dateOfResult = Date()
     var spellingMode: Int
-    var image: Image
+    var image: Image? = nil
 }
