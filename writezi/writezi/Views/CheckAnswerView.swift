@@ -23,6 +23,8 @@ struct CheckAnswerView: View {
                 NavigationLink(destination: ScoreFinalizationView(spellingList: spellingList).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
                 Spacer()
                 Text("\(spellingList.spellingList[questionNo].word)")
+                    .font(.system(size: 75))
+                
                 Spacer()
                 HStack{
                     Button{
