@@ -15,10 +15,11 @@ struct PastSpellingView: View {
         NavigationView{
             VStack{
                 if spellingList.pastResult == nil{
-                    Image(systemName: "externaldrive.fill.badge.xmark")
-                        .font(.system(size: 50.0))
-                    Text("No previous attempt for this spelling found. ")
-                        .padding()
+                    VStack(spacing: 10){
+                        Image(systemName: "externaldrive.fill.badge.xmark")
+                            .font(.system(size: 50.0))
+                        Text("No previous attempt for this spelling found.")
+                    }.padding()
                 } else {
                     CircularProgressView(fullscore: CGFloat(spellingList.pastResult?.results.count ?? 0), score: CGFloat(spellingList.pastResult?.score ?? 0))
                         .frame(width: 200, height: 200)
@@ -52,6 +53,7 @@ struct PastSpellingView: View {
             }
             .navigationTitle("Previous Attempt")
             .background(Color(.systemGroupedBackground))
+            .cornerRadius(10)
         }
         
     }

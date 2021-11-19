@@ -36,7 +36,7 @@ struct ContentView: View {
                             spellingList.lists.filter({ list in
                             return list.name.contains(searchText)
                     })).count == 0){
-                        Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill")
+                        Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill").foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
                     }
                     ForEach (searchText == "" ? spellingList.lists:
                         spellingList.lists.filter({ list in

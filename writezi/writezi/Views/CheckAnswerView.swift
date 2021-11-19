@@ -10,7 +10,7 @@ import SwiftUI
 struct CheckAnswerView: View {
     
     var spellingList: SpellingList
-    var mode: Int
+    var mode: Int = 0
     
     @State private var quit = false
     @State private var exit = false
@@ -22,56 +22,72 @@ struct CheckAnswerView: View {
         self.spellingList = spellingList
         self.mode = mode
         dataManager.lists[spellingList.number].pastResult = Result(score: 0, results: [], spellingMode: mode)
+        dataManager.save()
     }
     
     var body: some View {
         NavigationView {
+            
             VStack{
-                NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
-                NavigationLink(destination: ScoreFinalizationView(spellingList: spellingList).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
-                Spacer()
-                Text("\(spellingList.spellingList[questionNo].word)")
-                    .font(.system(size: 75))
+                if questionNo != spellingList.spellingList.count{
+                    NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
+                    NavigationLink(destination: ScoreFinalizationView(spellingList: dataManager.lists[spellingList.number]).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
+                    Spacer()
+                    Text("\(spellingList.spellingList[questionNo].word)")
+                        .font(.system(size: 75))
+                } else {
+                    Text("\(spellingList.spellingList[questionNo-1].word)")
+                        .font(.system(size: 75))
+                }
                 
                 Spacer()
-                HStack{
-                    Button{
-                        //Save data
-                        dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
-                        if questionNo == spellingList.spellingList.count - 1 {
+                if questionNo == spellingList.spellingList.count {
+                    VStack{
+                        Button {
                             dataManager.save()
+                            questionNo -= 1
                             finish = true
-                        } else {
-                            questionNo += 1
+                        } label: {
+                            Text("Finish")
                         }
-                    } label: {
-                        Text("Wrong")
-                            .frame(minWidth: 0, maxWidth: .infinity)
+                        .tint(Color("Success"))
+                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
+                        .padding()
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
                     }
-                    .tint(Color("Danger"))
-                    .frame(width: UIScreen.main.bounds.size.width * 0.35)
-                    .padding()
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-                    Button{
-                        //Save data
-                        dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
-                        dataManager.lists[spellingList.number].pastResult?.score += 1
-                        if questionNo == spellingList.spellingList.count - 1 {
+                } else {
+                    HStack{
+                        Button{
+                            //Save data
+                            dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
                             dataManager.save()
-                            finish = true
-                        } else {
                             questionNo += 1
+                        } label: {
+                            Text("Wrong")
+                                .frame(minWidth: 0, maxWidth: .infinity)
                         }
-                    } label: {
-                        Text("Correct")
-                            .frame(minWidth: 0, maxWidth: .infinity)
+                        .tint(Color("Danger"))
+                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
+                        .padding()
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        Button{
+                            //Save data
+                            dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
+                            dataManager.lists[spellingList.number].pastResult?.score += 1
+                            dataManager.save()
+                            questionNo += 1
+                        } label: {
+                            Text("Correct")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        }
+                        .tint(Color("Success"))
+                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
+                        .padding()
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
                     }
-                    .tint(Color("Success"))
-                    .frame(width: UIScreen.main.bounds.size.width * 0.35)
-                    .padding()
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
                 }
             }
             .navigationTitle("Question \(questionNo + 1)")
