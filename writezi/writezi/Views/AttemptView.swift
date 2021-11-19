@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct AttemptView: View {
-    @State private var chooseSpellingMode = false
     @ObservedObject public var reference: DataManager
     @State public var spellingListIdx: Int
     @State private var startSpelling = false
-    @State private var spellingMode:Int = 0
+    @State private var spellingMode:Int = 2
     @State private var previousSpellingTest = false
     @State private var showingEditView = false
+    @State private var chooseTime = false
+    @State private var selectedTime = 30
     
     var body: some View {
         VStack(){
-            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode, spellingList: reference.lists[spellingListIdx]).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
+            NavigationLink(destination: SpellingTestView(
+                spellingMode: spellingMode,
+                spellingList: reference.lists[spellingListIdx],
+                
+                fulltime: selectedTime, timeRemaining: $selectedTime
+            ).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
             Text("Last Updated: \(reference.lists[spellingListIdx].lastEdited.formatted(date: .long, time: .shortened))")
                 .frame(alignment: .leading)
                 .padding(10)
@@ -32,10 +38,37 @@ struct AttemptView: View {
                         }
                     }
                 }
+                Section(header: Text("Mode")) {
+                    Picker("Mode of spelling", selection: $spellingMode) {
+                        Text("Timed Practice")
+                            .tag(1)
+                        Text("Normal Practice")
+                            .tag(2)
+                        Text("Hinted Practice")
+                            .tag(3)
+                    }
+                    if spellingMode == 1 {
+                        Picker("Timer", selection: $selectedTime) {
+                            Text("10 Seconds")
+                                .tag(10)
+                            Text("20 Seconds")
+                                .tag(20)
+                            Text("30 Seconds")
+                                .tag(30)
+                            Text("40 Seconds")
+                                .tag(40)
+                            Text("50 Seconds")
+                                .tag(50)
+                            Text("60 Seconds")
+                                .tag(60)
+                        }
+                    }
+                }
+                
             }
             Spacer()
             Button{
-                chooseSpellingMode = true
+                startSpelling = true
             } label: {
                 Text("Start")
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -68,32 +101,13 @@ struct AttemptView: View {
                 }
             })
         }
-        .confirmationDialog("Choose Mode", isPresented: $chooseSpellingMode) {
-            Button{
-                startSpelling = true
-                spellingMode = 1
-            }label: {
-                Text("Timed Practice")
-            }
-            Button{
-                startSpelling = true
-                spellingMode = 2
-            }label: {
-                Text("Normal Practice")
-            }
-            Button{
-                startSpelling = true
-                spellingMode = 3
-            }label: {
-                Text("Hinted Practice")
-            }
-        }
         .sheet(isPresented: $previousSpellingTest){
             PastSpellingView(spellingList: reference.lists[spellingListIdx])
         }
         .sheet(isPresented: $showingEditView){
             EditSpellingView(listNumberToEdit: spellingListIdx)
         }
+        
     }
 }
 

@@ -45,44 +45,55 @@ struct NewSpellingView: View {
             }
             .navigationTitle("New List")
             .toolbar {
-                Button {
-                    //validate the list
-                    for i in 0..<newSpellingList.spellingList.count{
-                        
-                        //check if the word is empty
-                        if(newSpellingList.spellingList[i].word == ""){
-                            //Alert
-                            alertToShow = "The \(i+1)th word is empty!"
-                            alertPresented = true
-                            return
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button {
+                        //validate the list
+                        for i in 0..<newSpellingList.spellingList.count{
+                            
+                            //check if the word is empty
+                            if(newSpellingList.spellingList[i].word == ""){
+                                //Alert
+                                alertToShow = "The \(i+1)th word is empty!"
+                                alertPresented = true
+                                return
+                            }
+                            
+                            //check for chinese
+                            if(!isAllChinese(string: newSpellingList.spellingList[i].word)){
+                                //Alert
+                                alertToShow = "The \(i+1)th word is not Chinese!"
+                                alertPresented = true
+                                return
+                            }
                         }
                         
-                        //check for chinese
-                        if(!isAllChinese(string: newSpellingList.spellingList[i].word)){
+                        if (newSpellingList.name != ""){
+                            spellingList.lists.append(newSpellingList)
+                            spellingList.save()
+                            reference?.load()
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
                             //Alert
-                            alertToShow = "The \(i+1)th word is not Chinese!"
+                            alertToShow = "Spelling List Title Cannot Be Empty!"
                             alertPresented = true
-                            return
                         }
+                        
+                    } label: {
+                        Text("Save")
+                    }})
+                ToolbarItem(placement: .navigationBarLeading, content: {
+                    Button{
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("cancel")
+                            .foregroundColor(Color("Danger"))
+                            
                     }
-                    
-                    if (newSpellingList.name != ""){
-                        spellingList.lists.append(newSpellingList)
-                        spellingList.save()
-                        reference?.load()
-                        presentationMode.wrappedValue.dismiss()
-                    } else {
-                        //Alert
-                        alertToShow = "Spelling List Title Cannot Be Empty!"
-                        alertPresented = true
-                    }
-                    
-                } label: {
-                    Text("Save")
-                }
-                .alert(Text(alertToShow), isPresented: $alertPresented){
-                    Button("Ok"){alertPresented = false}
-                }
+                })
+            }
+                    .alert(Text(alertToShow), isPresented: $alertPresented){
+                        Button("Ok"){alertPresented = false}
+                
             }
         }
     }

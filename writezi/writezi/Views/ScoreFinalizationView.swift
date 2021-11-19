@@ -2,7 +2,7 @@
 //  ScoreFinalizationView.swift
 //  writezi
 //
-//  Created by hao jun on 17/11/21.
+//  Created by jun hao on 17/11/21.
 //
 
 import SwiftUI

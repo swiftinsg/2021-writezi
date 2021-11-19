@@ -11,12 +11,13 @@ struct SpellingTestView: View {
     
     var spellingMode:Int;
     var spellingList:SpellingList;
+    var fulltime: Int
     
     @State private var finish = false
     @State private var quit = false;
     @State private var exit = false;
     @State private var questionNo = 0
-    @State private var timeRemaining = 30
+    @Binding var timeRemaining: Int
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -135,7 +136,11 @@ struct SpellingTestView: View {
 
 struct SpellingTestView_Previews: PreviewProvider {
     static var previews: some View {
-        SpellingTestView(spellingMode: 2, spellingList: SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO")
+        SpellingTestView(
+            spellingMode: 2,
+            spellingList: SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO"),
+            fulltime: 30, timeRemaining: .constant(30)
+            
         )
     }
 }

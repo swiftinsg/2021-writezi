@@ -24,6 +24,7 @@ struct CircularProgressView: View {
                         .stroke(style: .init(lineWidth: 20.0,
                                              lineCap: .round,
                                              lineJoin: .round))
+                        .opacity(0.8)
                         .foregroundColor(.red)
                         .rotationEffect(Angle(degrees: 270))
             Text("Score: \(Int(score))/\(Int(fullscore)) (\(Int(score/fullscore*100))%)")
