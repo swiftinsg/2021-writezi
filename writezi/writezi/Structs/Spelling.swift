@@ -15,6 +15,7 @@ struct SpellingList: Identifiable, Codable {
     var name: String
     var pastResult: Result? = nil
     var id = UUID()
+    var number = 0
 }
 
 struct SpellingWord: Identifiable, Codable{

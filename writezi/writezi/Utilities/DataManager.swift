@@ -13,6 +13,9 @@ class DataManager: ObservableObject {
     }
     
     func save() {
+        for i in 0..<lists.count{
+            lists[i].number = i
+        }
         let archiveURL = getArchiveURL()
         let propertyListEncoder = PropertyListEncoder()
         let encodedList = try? propertyListEncoder.encode(lists)
