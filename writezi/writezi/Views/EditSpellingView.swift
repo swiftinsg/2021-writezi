@@ -40,7 +40,7 @@ struct EditSpellingView: View {
                     }
                 }
             }
-            .navigationTitle("New List")
+            .navigationTitle("Edit List")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
                 ToolbarItem(placement: .navigationBarTrailing) {

@@ -32,6 +32,12 @@ struct ContentView: View {
                 
                 //Spelling List
                 List{
+                    if((searchText == "" ? spellingList.lists:
+                            spellingList.lists.filter({ list in
+                            return list.name.contains(searchText)
+                    })).count == 0){
+                        Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill")
+                    }
                     ForEach (searchText == "" ? spellingList.lists:
                         spellingList.lists.filter({ list in
                         return list.name.contains(searchText)
