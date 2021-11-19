@@ -36,6 +36,7 @@ struct CheckAnswerView: View {
                     Text("\(spellingList.spellingList[questionNo].word)")
                         .font(.system(size: 75))
                 } else {
+                    Spacer()
                     Text("\(spellingList.spellingList[questionNo-1].word)")
                         .font(.system(size: 75))
                 }

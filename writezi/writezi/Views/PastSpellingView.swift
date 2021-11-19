@@ -21,6 +21,7 @@ struct PastSpellingView: View {
                         Text("No previous attempt for this spelling found.")
                     }.padding()
                 } else {
+                    Spacer()
                     CircularProgressView(fullscore: CGFloat(spellingList.pastResult?.results.count ?? 0), score: CGFloat(spellingList.pastResult?.score ?? 0))
                         .frame(width: 200, height: 200)
                         .padding()
