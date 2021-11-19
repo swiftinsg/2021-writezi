@@ -24,6 +24,7 @@
 		3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB46A7C273F55E4008AE14E /* Spelling.swift */; };
 		3ABD77682747356A0044E324 /* EditSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD7767274735690044E324 /* EditSpellingView.swift */; };
 		3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD02DA12745ED68001B1458 /* DataManager.swift */; };
+		6A29D5F82747800300C86D8F /* parsed-json.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A29D5F72747800300C86D8F /* parsed-json.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		3AB46A7C273F55E4008AE14E /* Spelling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spelling.swift; sourceTree = "<group>"; };
 		3ABD7767274735690044E324 /* EditSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpellingView.swift; sourceTree = "<group>"; };
 		3AD02DA12745ED68001B1458 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6A29D5F72747800300C86D8F /* parsed-json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "parsed-json.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */,
+				6A29D5F627477FB800C86D8F /* Data */,
 				3AD02DA527467C01001B1458 /* Utilities */,
 				3AD02D9E2745E8DC001B1458 /* Views */,
 				3AD02D9F2745E8EC001B1458 /* Structs */,
@@ -128,6 +131,14 @@
 				26A959FC2745363100319126 /* CircularProgressView.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6A29D5F627477FB800C86D8F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6A29D5F72747800300C86D8F /* parsed-json.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 			files = (
 				3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */,
 				3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */,
+				6A29D5F82747800300C86D8F /* parsed-json.json in Resources */,
 				3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
