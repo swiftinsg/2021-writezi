@@ -17,6 +17,7 @@ struct SpellingTestView: View {
     @State private var quit = false;
     @State private var exit = false;
     @State private var questionNo = 0
+    @State var stopTime = false;
     @Binding var timeRemaining: Int
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -32,11 +33,12 @@ struct SpellingTestView: View {
                         Circle()
                             .fill(Color.white)
                             .frame(width: 100.0, height: 100.0)
-                            
+                        
                         Text("\(timeRemaining)")
                             .font(.largeTitle)
                             .cornerRadius(100.0)
                             .onReceive(timer) { time in
+                                print("timer")
                                 if self.timeRemaining > 0 {
                                     self.timeRemaining -= 1
                                 } else {
@@ -47,6 +49,8 @@ struct SpellingTestView: View {
                                         questionNo += 1
                                     }
                                 }
+                                
+                                
                             }
                             .padding(10.0)
                     }
@@ -80,7 +84,9 @@ struct SpellingTestView: View {
                     }
                     Button{
                         if questionNo == spellingList.spellingList.count - 1 {
+                            self.timer.upstream.connect().cancel()
                             finish = true
+                            
                         } else {
                             timeRemaining = 30
                             questionNo += 1
@@ -120,6 +126,7 @@ struct SpellingTestView: View {
                     primaryButton: .destructive(
                         Text("Quit"),
                         action: {
+                            self.timer.upstream.connect().cancel()
                             exit = true
                         }
                     ), secondaryButton: .default(
@@ -128,7 +135,7 @@ struct SpellingTestView: View {
                     )
                 )
             }
-        .background(Color(.systemGroupedBackground))
+            .background(Color(.systemGroupedBackground))
         }
     }
     
