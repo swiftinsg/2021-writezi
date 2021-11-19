@@ -79,7 +79,7 @@ struct AttemptView: View {
             .buttonStyle(.bordered)
             .controlSize(.large)
             Button{
-                showingPreviousSpellingTest = true
+                showPreviousSpellingTest = true
             }label: {
                 Text("View Previous Attempt")
                     .frame(minWidth: 0, maxWidth: .infinity)
