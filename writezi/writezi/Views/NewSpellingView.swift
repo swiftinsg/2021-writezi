@@ -50,6 +50,11 @@ struct NewSpellingView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button {
+                        if(newSpellingList.spellingList.count < 1){
+                            alertToShow = "At least 1 word must be present"
+                            alertPresented = true
+                            return
+                        }
                         //validate the list
                         for i in 0..<newSpellingList.spellingList.count{
                             

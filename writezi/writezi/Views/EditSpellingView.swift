@@ -44,9 +44,14 @@ struct EditSpellingView: View {
                 ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        if(spellingList.lists[listNumberToEdit].spellingList.count < 1){
+                            alertToShow = "At least 1 word must be present"
+                            alertPresented = true
+                            return
+                        }
+                        
                        //validate the list
                        for i in 0..<spellingList.lists[listNumberToEdit].spellingList.count{
-                           
                            //check if the word is empty
                            if(spellingList.lists[listNumberToEdit].spellingList[i].word == ""){
                                //Alert
