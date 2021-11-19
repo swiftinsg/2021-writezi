@@ -15,6 +15,7 @@
 		26A959F9274522D400319126 /* PastSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959F8274522D400319126 /* PastSpellingView.swift */; };
 		26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959FA27452B9700319126 /* ScoreFinalizationView.swift */; };
 		26A959FD2745363100319126 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A959FC2745363100319126 /* CircularProgressView.swift */; };
+		26B7158427476FCB00E35E1B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7158327476FCB00E35E1B /* ImagePicker.swift */; };
 		3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1E574B2742332E00FC067A /* Colours.xcassets */; };
 		3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */; };
 		3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA7273BA943006F6AF1 /* ContentView.swift */; };
@@ -34,6 +35,7 @@
 		26A959F8274522D400319126 /* PastSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastSpellingView.swift; sourceTree = "<group>"; };
 		26A959FA27452B9700319126 /* ScoreFinalizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreFinalizationView.swift; sourceTree = "<group>"; };
 		26A959FC2745363100319126 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		26B7158327476FCB00E35E1B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3A1E574B2742332E00FC067A /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
 		3A6E5EA2273BA943006F6AF1 /* writezi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = writezi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeziApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				26A959FA27452B9700319126 /* ScoreFinalizationView.swift */,
+				26B7158327476FCB00E35E1B /* ImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
 				3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */,
 				26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */,
+				26B7158427476FCB00E35E1B /* ImagePicker.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingView.swift in Sources */,
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
