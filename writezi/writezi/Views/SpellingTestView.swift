@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct SpellingTestView: View {
     
@@ -18,7 +19,12 @@ struct SpellingTestView: View {
     @State private var exit = false;
     @State private var questionNo = 0
     @State var stopTime = false;
+    
+    @State private var pinyinList: [String: String]?
+
     @Binding var timeRemaining: Int
+    
+    
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -56,17 +62,47 @@ struct SpellingTestView: View {
                     }
                 }
                 Button{
-                    // Sound
+                    let utterance = AVSpeechUtterance(string: spellingList.spellingList[questionNo].word)
+                    utterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
+
+                    let synth = AVSpeechSynthesizer()
+                    synth.speak(utterance)
                 } label: {
-                    Image(systemName: "speaker.wave.3.fill")
-                        .imageScale(.large)
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 100.0))
-                        .padding()
+                    HStack{
+                        Image(systemName: "speaker.wave.3.fill")
+                            .imageScale(.large)
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 100.0))
+                            .padding()
+                        
+                        if spellingMode == 3 {
+                            if let pinyinList = pinyinList {
+                                var pinYin = ""
+//                                ForEach(Array(spellingList.spellingList[questionNo].word), id: \.self) { character in
+//                                    pinYin.append(String(character))
+//                                    pinYin.append(" ")
+//                                }
+//                                ForEach(Array(spellingList.spellingList[questionNo].word.enumerated()), id: \.offset) { character in
+//                                    pinYin.append(String(character.element))
+//                                }
+//                                for character in spellingList.spellingList[questionNo].word{
+//
+//                                }
+                                
+                                let wording = spellingList.spellingList[questionNo].word
+//                                let arr = wording.map { pinYin += pinyinList[String($0)] ?? "" }
+                                
+//                                print(arr)
+                                
+                                
+//                                Text(pinYin)
+                                
+                            }
+                        }
+                    }
+                    .padding()
                 }
-                if spellingMode == 3 {
-                    Text("pinyin")
-                }
+                
                 Spacer()
                 HStack{
                     if questionNo > 0 && spellingMode != 1{
@@ -138,7 +174,6 @@ struct SpellingTestView: View {
             .background(Color(.systemGroupedBackground))
         }
     }
-    
 }
 
 struct SpellingTestView_Previews: PreviewProvider {
