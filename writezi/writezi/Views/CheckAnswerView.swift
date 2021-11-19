@@ -10,11 +10,19 @@ import SwiftUI
 struct CheckAnswerView: View {
     
     var spellingList: SpellingList
+    var mode: Int
     
     @State private var quit = false
     @State private var exit = false
     @State private var questionNo = 0
     @State private var finish = false
+    @State private var dataManager = DataManager()
+    
+    init(spellingList: SpellingList, mode: Int){
+        self.spellingList = spellingList
+        self.mode = mode
+        dataManager.lists[spellingList.number].pastResult = Result(score: 0, results: [], spellingMode: mode)
+    }
     
     var body: some View {
         NavigationView {
@@ -29,7 +37,9 @@ struct CheckAnswerView: View {
                 HStack{
                     Button{
                         //Save data
+                        dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
                         if questionNo == spellingList.spellingList.count - 1 {
+                            dataManager.save()
                             finish = true
                         } else {
                             questionNo += 1
@@ -45,7 +55,10 @@ struct CheckAnswerView: View {
                     .controlSize(.large)
                     Button{
                         //Save data
+                        dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
+                        dataManager.lists[spellingList.number].pastResult?.score += 1
                         if questionNo == spellingList.spellingList.count - 1 {
+                            dataManager.save()
                             finish = true
                         } else {
                             questionNo += 1
@@ -94,6 +107,6 @@ struct CheckAnswerView: View {
 
 struct CheckAnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckAnswerView(spellingList: SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO"))
+        CheckAnswerView(spellingList: SpellingList(spellingList: [SpellingWord(word: "你好")], name: "HALLO"), mode: 0)
     }
 }

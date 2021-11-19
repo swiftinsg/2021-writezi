@@ -28,9 +28,18 @@ struct Result: Codable {
     var results: [WordResult]
     var dateOfResult = Date()
     var spellingMode: Int
+    var Image: SomeImage? = nil
 }
 
-struct WordResult: Codable{
+struct WordResult: Codable, Identifiable{
     var word: String
     var correct: Bool
+    var id = UUID()
+}
+
+public struct SomeImage: Codable {
+    public let photo: Data
+    public init(photo: UIImage) {
+        self.photo = photo.pngData()!
+    }
 }

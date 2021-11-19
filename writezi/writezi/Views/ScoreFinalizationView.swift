@@ -10,18 +10,21 @@ import SwiftUI
 struct ScoreFinalizationView: View {
     
     var spellingList: SpellingList
-    
-    @State var quit = false
     @State var exit = false
     @State var image: Image?
     @State var showImagePicker = false
     @State var inputImage: UIImage?
+    @ObservedObject var dataManager = DataManager()
+    
+    init(spellingList: SpellingList){
+        self.spellingList = spellingList
+    }
     
     var body: some View {
-        NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
+        NavigationLink(destination: ContentView(spellingList: dataManager).navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
         NavigationView {
             VStack{
-                CircularProgressView(fullscore: 1, score: 1) // needs to be changed later
+                CircularProgressView(fullscore: CGFloat(dataManager.lists[spellingList.number].spellingList.count), score: CGFloat(dataManager.lists[spellingList.number].pastResult!.score))
                     .padding()
                     .frame(width: UIScreen.main.bounds.size.width * 0.7)
                 if image != nil {
@@ -49,40 +52,29 @@ struct ScoreFinalizationView: View {
                     .tint(.blue)
                     .buttonStyle(.bordered)
                 }
-                List (spellingList.spellingList) {spellingList in
+                List (dataManager.lists[spellingList.number].pastResult!.results) {spellingList in
                     Text("\(spellingList.word)")
-                        .listRowBackground(Color(red: 0.0, green: 1.0, blue: 0, opacity: 0.3))//Add a if statement here later
+                        .listRowBackground(Color(red: !spellingList.correct ? 1.0 : 0.0, green: spellingList.correct ? 1.0 : 0.0, blue: 0, opacity: 0.3))
                 }
             }
             .sheet (isPresented: $showImagePicker, onDismiss: loadImage){
                 ImagePicker(image: self.$inputImage)
-                
             }
             .navigationTitle("Results")
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading, content: {
                     Button {
-                        quit = true
+                        if(inputImage != nil){
+                            dataManager.lists[spellingList.number].pastResult?.Image = SomeImage(photo: inputImage!)
+                            dataManager.lists[spellingList.number].pastResult?.dateOfResult = Date()
+                        }
+                        dataManager.save()
+                        exit = true
                     }label: {
-                        Image(systemName: "xmark")
+                        Text("Save")
                     }
                 })
-            }
-            .alert(isPresented: $quit) {
-                Alert(
-                    title: Text("Are you sure you want to quit?"),
-                    message: Text("All your data for this spelling test will be lost. "),
-                    primaryButton: .destructive(
-                        Text("Quit"),
-                        action: {
-                            exit = true
-                        }
-                    ), secondaryButton: .default(
-                        Text("Cancel"),
-                        action: {}//No Action to be done
-                    )
-                )
             }
             .background(Color(.systemGroupedBackground))
         }

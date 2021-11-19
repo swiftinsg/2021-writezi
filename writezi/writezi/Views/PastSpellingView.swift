@@ -24,7 +24,27 @@ struct PastSpellingView: View {
                         .frame(width: 200, height: 200)
                         .padding()
                     List{
-                        
+                        Section(header: Text("Details")) {
+                            Text("Attempt Date: \(spellingList.pastResult!.dateOfResult)").font(.system(size: 15))
+                            Text("Attempt Mode: \(spellingList.pastResult!.spellingMode == 1 ? "Timed Practice" : spellingList.pastResult!.spellingMode == 2 ? "Normal Practice" : "Hinted Practice")").font(.system(size: 15))
+                        }
+                        Section(header: Text("Words")) {
+                            ForEach (spellingList.pastResult!.results){ result in
+                                NavigationLink (destination: WordMeaningView(word: result.word)){
+                                    VStack(alignment: .leading) {
+                                        Text(result.word)
+                                            .listRowBackground(Color(red: !result.correct ? 1.0 : 0.0, green: result.correct ? 1.0 : 0.0, blue: 0, opacity: 0.3))
+                                    }
+                                }
+                            }
+                        }
+                        Section(header: Text("Archived Image")) {
+                            if(spellingList.pastResult!.Image != nil && spellingList.pastResult!.Image?.photo != nil){
+                                Image(uiImage: UIImage(data: spellingList.pastResult!.Image!.photo)!)
+                            } else {
+                                Text("No Image of the test was provided!").font(.subheadline)
+                            }
+                        }
                     }
                 }
             }

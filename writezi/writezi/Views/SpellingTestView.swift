@@ -25,7 +25,7 @@ struct SpellingTestView: View {
         NavigationView {
             VStack{
                 Spacer()
-                NavigationLink(destination: CheckAnswerView(spellingList: spellingList).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
+                NavigationLink(destination: CheckAnswerView(spellingList: spellingList, mode: spellingMode).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
                 NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
                 if spellingMode == 1 {
                     ZStack {

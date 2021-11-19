@@ -32,7 +32,7 @@ struct AttemptView: View {
             List{
                 Section (header: Text("Words")){
                     ForEach (reference.lists[spellingListIdx].spellingList){ list in
-                        NavigationLink (destination: WordMeaningView(word: list.word)                ){
+                        NavigationLink (destination: WordMeaningView(word: list.word)){
                             VStack(alignment: .leading) {
                                 Text(list.word)
                             }
