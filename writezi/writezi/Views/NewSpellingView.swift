@@ -41,12 +41,20 @@ struct NewSpellingView: View {
                     ForEach($newSpellingList.spellingList) { $spellingList in
                         TextField("Word", text: $spellingList.word)
                     }
+                    .onDelete { indexSet in
+                        newSpellingList.spellingList.remove(atOffsets: indexSet)
+                    }
                 }
             }
             .navigationTitle("New List")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button {
+                        if(newSpellingList.spellingList.count < 1){
+                            alertToShow = "At least 1 word must be present"
+                            alertPresented = true
+                            return
+                        }
                         //validate the list
                         for i in 0..<newSpellingList.spellingList.count{
                             
@@ -81,15 +89,7 @@ struct NewSpellingView: View {
                     } label: {
                         Text("Save")
                     }})
-                ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button{
-                        self.presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Text("cancel")
-                            .foregroundColor(Color("Danger"))
-                            
-                    }
-                })
+                ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
             }
                     .alert(Text(alertToShow), isPresented: $alertPresented){
                         Button("Ok"){alertPresented = false}

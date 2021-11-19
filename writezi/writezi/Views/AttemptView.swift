@@ -65,7 +65,6 @@ struct AttemptView: View {
                         }
                     }
                 }
-                
             }
             Spacer()
             Button{
