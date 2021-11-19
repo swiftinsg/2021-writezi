@@ -11,7 +11,6 @@ struct ContentView: View {
     @State public var searchText = ""
     @ObservedObject public var spellingList = DataManager()
     @State public var newSpellingList = false
-    var count = 0
     
     var body: some View {
         NavigationView{
@@ -33,11 +32,11 @@ struct ContentView: View {
                 
                 //Spelling List
                 List{
-                    ForEach (0..<(searchText == "" ? spellingList.lists.count: spellingList.lists.filter({ list in
+                    ForEach (searchText == "" ? spellingList.lists:
+                        spellingList.lists.filter({ list in
                         return list.name.contains(searchText)
-                    }).count)){ count in
-                        let list = spellingList.lists[count]
-                        NavigationLink (destination: AttemptView(reference: spellingList, spellingListIdx: count)){
+                    })){ list in
+                        NavigationLink (destination: AttemptView(reference: spellingList, spellingListIdx: list.number)){
                             VStack(alignment: .leading) {
                                 Text(list.name)
                                     .bold()
