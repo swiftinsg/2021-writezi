@@ -21,6 +21,7 @@
 		3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */; };
 		3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */; };
 		3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB46A7C273F55E4008AE14E /* Spelling.swift */; };
+		3ABD77682747356A0044E324 /* EditSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD7767274735690044E324 /* EditSpellingView.swift */; };
 		3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD02DA12745ED68001B1458 /* DataManager.swift */; };
 		3AD02DA42745FB63001B1458 /* SpellingList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AD02DA32745FB63001B1458 /* SpellingList.plist */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A6E5EAC273BA948006F6AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3AB46A7C273F55E4008AE14E /* Spelling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spelling.swift; sourceTree = "<group>"; };
+		3ABD7767274735690044E324 /* EditSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpellingView.swift; sourceTree = "<group>"; };
 		3AD02DA12745ED68001B1458 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3AD02DA32745FB63001B1458 /* SpellingList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SpellingList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 				263829572744AD2000CDA75B /* SpellingTestView.swift */,
 				26A959F8274522D400319126 /* PastSpellingView.swift */,
 				26A959F62744E77100319126 /* CheckAnswerView.swift */,
+				3ABD7767274735690044E324 /* EditSpellingView.swift */,
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				26A959FA27452B9700319126 /* ScoreFinalizationView.swift */,
@@ -208,6 +211,7 @@
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
 				26A8EB0A2743D5CF0004FEAE /* AttemptView.swift in Sources */,
 				26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */,
+				3ABD77682747356A0044E324 /* EditSpellingView.swift in Sources */,
 				263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */,
 				26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */,
 				26A959FD2745363100319126 /* CircularProgressView.swift in Sources */,

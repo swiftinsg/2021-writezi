@@ -5,40 +5,33 @@
 //  Created by jun hao on 16/11/21.
 //
 import SwiftUI
-func isAllChinese(string: String) -> Bool{
-    var result = true
-    string.forEach { char in
-        let regex = try! NSRegularExpression(pattern: "\\p{Han}", options: [])
-        let isMatch = regex.firstMatch(in: "\(char)", options: [], range: NSMakeRange(0, char.utf16.count)) != nil
-        result = result && isMatch
-    }
-    return result
-}
-struct NewSpellingView: View {
-    @State public var newSpellingList = SpellingList(spellingList: [SpellingWord()], name: "")
+
+struct EditSpellingView: View {
     @State public var spellingList = DataManager()
     @State public var reference:DataManager?
+    @State public var listNumberToEdit: Int
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         NavigationView{
             Form{
                 Section (header: Text("Title")){
-                    TextField("Title of Spelling List", text: $newSpellingList.name )
+                    TextField("Title of Spelling List", text: $spellingList.lists[listNumberToEdit].name )
                 }
                 
                 Section (header: HStack{
                     Text("Words")
                     Spacer()
                     Button{
-                        newSpellingList.spellingList.append(SpellingWord())
+                        spellingList.lists[listNumberToEdit].spellingList.append(SpellingWord())
                     } label : {
                         Image(systemName: "plus")
                     }
                     
                 }){
-                    ForEach($newSpellingList.spellingList) { $spellingList in
+                    ForEach($spellingList.lists[listNumberToEdit].spellingList) { $spellingList in
                         TextField("Word", text: $spellingList.word)
                     }
                 }
@@ -47,10 +40,10 @@ struct NewSpellingView: View {
             .toolbar {
                 Button {
                     //validate the list
-                    for i in 0..<newSpellingList.spellingList.count{
+                    for i in 0..<spellingList.lists[listNumberToEdit].spellingList.count{
                         
                         //check if the word is empty
-                        if(newSpellingList.spellingList[i].word == ""){
+                        if(spellingList.lists[listNumberToEdit].spellingList[i].word == ""){
                             //Alert
                             alertToShow = "The \(i+1)th word is empty!"
                             alertPresented = true
@@ -58,7 +51,7 @@ struct NewSpellingView: View {
                         }
                         
                         //check for chinese
-                        if(!isAllChinese(string: newSpellingList.spellingList[i].word)){
+                        if(!isAllChinese(string: spellingList.lists[listNumberToEdit].spellingList[i].word)){
                             //Alert
                             alertToShow = "The \(i+1)th word is not Chinese!"
                             alertPresented = true
@@ -66,8 +59,7 @@ struct NewSpellingView: View {
                         }
                     }
                     
-                    if (newSpellingList.name != ""){
-                        spellingList.lists.append(newSpellingList)
+                    if (spellingList.lists[listNumberToEdit].name != ""){
                         spellingList.save()
                         reference?.load()
                         presentationMode.wrappedValue.dismiss()
@@ -88,8 +80,8 @@ struct NewSpellingView: View {
     }
 }
 
-struct NewSpellingView_Previews: PreviewProvider {
+struct EditSpellingView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSpellingView()
+        EditSpellingView(listNumberToEdit: 1)
     }
 }

@@ -33,14 +33,11 @@ struct ContentView: View {
                 
                 //Spelling List
                 List{
-                    ForEach (searchText == "" ? spellingList.lists : spellingList.lists.filter({ list in
-                        if(list.name.contains(searchText)) {
-                            return true
-                        } else{
-                            return false
-                        }
-                    })){ list in
-                        NavigationLink (destination: AttemptView(spellingList: list)){
+                    ForEach (0..<(searchText == "" ? spellingList.lists.count: spellingList.lists.filter({ list in
+                        return list.name.contains(searchText)
+                    }).count)){ count in
+                        let list = spellingList.lists[count]
+                        NavigationLink (destination: AttemptView(reference: spellingList, spellingListIdx: count)){
                             VStack(alignment: .leading) {
                                 Text(list.name)
                                     .bold()

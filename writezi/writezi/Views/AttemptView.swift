@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct AttemptView: View {
-    
     @State private var chooseSpellingMode = false
-    var spellingList: SpellingList
+    @ObservedObject public var reference: DataManager
+    @State public var spellingListIdx: Int
     @State private var startSpelling = false
     @State private var spellingMode:Int = 0
     @State private var previousSpellingTest = false
+    @State private var showingEditView = false
     
     var body: some View {
-        VStack{
-            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode, spellingList: spellingList).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
-            Text("Last Updated: \(spellingList.lastEdited.formatted(date: .long, time: .shortened))")
+        VStack(){
+            NavigationLink(destination: SpellingTestView(spellingMode: spellingMode, spellingList: reference.lists[spellingListIdx]).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
+            Text("Last Updated: \(reference.lists[spellingListIdx].lastEdited.formatted(date: .long, time: .shortened))")
+                .frame(alignment: .leading)
+                .padding(10)
             List{
                 Section (header: Text("Words")){
-                    ForEach (spellingList.spellingList){ list in
+                    ForEach (reference.lists[spellingListIdx].spellingList){ list in
                         NavigationLink (destination: WordMeaningView(word: list.word)                ){
                             VStack(alignment: .leading) {
                                 Text(list.word)
@@ -54,11 +57,12 @@ struct AttemptView: View {
             .controlSize(.large)
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle(spellingList.name)
+        .navigationTitle(reference.lists[spellingListIdx].name)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button {
                     //Edit
+                    showingEditView = true
                 } label: {
                     Text("Edit")
                 }
@@ -85,13 +89,16 @@ struct AttemptView: View {
             }
         }
         .sheet(isPresented: $previousSpellingTest){
-            PastSpellingView(spellingList: spellingList)
+            PastSpellingView(spellingList: reference.lists[spellingListIdx])
+        }
+        .sheet(isPresented: $showingEditView){
+            EditSpellingView(listNumberToEdit: spellingListIdx)
         }
     }
 }
 
 struct AttemptView_Previews: PreviewProvider {
     static var previews: some View {
-        AttemptView(spellingList: SpellingList(name: "Test"))
+        AttemptView(reference: DataManager(), spellingListIdx: 0)
     }
 }
