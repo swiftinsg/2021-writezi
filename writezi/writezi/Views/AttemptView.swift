@@ -13,7 +13,7 @@ struct AttemptView: View {
     @State public var spellingListIdx: Int
     @State private var startSpelling = false
     @State private var spellingMode:Int = 2
-    @State private var previousSpellingTest = false
+    @State private var showPreviousSpellingTest = false
     @State private var showingEditView = false
     @State private var chooseTime = false
     @State private var selectedTime = 30
@@ -102,7 +102,7 @@ struct AttemptView: View {
                 }
             })
         }
-        .sheet(isPresented: $previousSpellingTest){
+        .sheet(isPresented: $showPreviousSpellingTest){
             PastSpellingView(spellingList: reference.lists[spellingListIdx])
         }
         .sheet(isPresented: $showingEditView){
