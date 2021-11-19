@@ -41,6 +41,8 @@ struct PastSpellingView: View {
                         Section(header: Text("Archived Image")) {
                             if(spellingList.pastResult!.Image != nil && spellingList.pastResult!.Image?.photo != nil){
                                 Image(uiImage: UIImage(data: spellingList.pastResult!.Image!.photo)!)
+                                    .resizable()
+                                    .scaledToFit()
                             } else {
                                 Text("No Image of the test was provided!").font(.subheadline)
                             }
@@ -49,7 +51,9 @@ struct PastSpellingView: View {
                 }
             }
             .navigationTitle("Previous Attempt")
+            .background(Color(.systemGroupedBackground))
         }
+        
     }
 }
 
