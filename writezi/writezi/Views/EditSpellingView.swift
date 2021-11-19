@@ -34,48 +34,53 @@ struct EditSpellingView: View {
                     ForEach($spellingList.lists[listNumberToEdit].spellingList) { $spellingList in
                         TextField("Word", text: $spellingList.word)
                     }
+                    .onDelete { indexset in
+                        spellingList.lists[listNumberToEdit].spellingList.remove(atOffsets: indexset)
+                    }
                 }
             }
             .navigationTitle("New List")
             .toolbar {
-                Button {
-                    //validate the list
-                    for i in 0..<spellingList.lists[listNumberToEdit].spellingList.count{
-                        
-                        //check if the word is empty
-                        if(spellingList.lists[listNumberToEdit].spellingList[i].word == ""){
-                            //Alert
-                            alertToShow = "The \(i+1)th word is empty!"
-                            alertPresented = true
-                            return
-                        }
-                        
-                        //check for chinese
-                        if(!isAllChinese(string: spellingList.lists[listNumberToEdit].spellingList[i].word)){
-                            //Alert
-                            alertToShow = "The \(i+1)th word is not Chinese!"
-                            alertPresented = true
-                            return
-                        }
-                    }
-                    
-                    if (spellingList.lists[listNumberToEdit].name != ""){
-                        spellingList.lists[listNumberToEdit].lastEdited = Date()
-                        spellingList.save()
-                        print(reference)
-                        reference?.load()
-                        presentationMode.wrappedValue.dismiss()
-                    } else {
-                        //Alert
-                        alertToShow = "Spelling List Title Cannot Be Empty!"
-                        alertPresented = true
-                    }
-                    
-                } label: {
-                    Text("Save")
-                }
-                .alert(Text(alertToShow), isPresented: $alertPresented){
-                    Button("Ok"){alertPresented = false}
+                ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                       //validate the list
+                       for i in 0..<spellingList.lists[listNumberToEdit].spellingList.count{
+                           
+                           //check if the word is empty
+                           if(spellingList.lists[listNumberToEdit].spellingList[i].word == ""){
+                               //Alert
+                               alertToShow = "The \(i+1)th word is empty!"
+                               alertPresented = true
+                               return
+                           }
+                           
+                           //check for chinese
+                           if(!isAllChinese(string: spellingList.lists[listNumberToEdit].spellingList[i].word)){
+                               //Alert
+                               alertToShow = "The \(i+1)th word is not Chinese!"
+                               alertPresented = true
+                               return
+                           }
+                       }
+                       
+                       if (spellingList.lists[listNumberToEdit].name != ""){
+                           spellingList.lists[listNumberToEdit].lastEdited = Date()
+                           spellingList.save()
+                           reference?.load()
+                           presentationMode.wrappedValue.dismiss()
+                       } else {
+                           //Alert
+                           alertToShow = "Spelling List Title Cannot Be Empty!"
+                           alertPresented = true
+                       }
+                       
+                   } label: {
+                       Text("Save")
+                   }
+                   .alert(Text(alertToShow), isPresented: $alertPresented){
+                       Button("Ok"){alertPresented = false}
+                   }
                 }
             }
         }

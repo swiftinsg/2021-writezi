@@ -41,6 +41,9 @@ struct NewSpellingView: View {
                     ForEach($newSpellingList.spellingList) { $spellingList in
                         TextField("Word", text: $spellingList.word)
                     }
+                    .onDelete { indexSet in
+                        newSpellingList.spellingList.remove(atOffsets: indexSet)
+                    }
                 }
             }
             .navigationTitle("New List")
@@ -81,15 +84,7 @@ struct NewSpellingView: View {
                     } label: {
                         Text("Save")
                     }})
-                ToolbarItem(placement: .navigationBarLeading, content: {
-                    Button{
-                        self.presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Text("cancel")
-                            .foregroundColor(Color("Danger"))
-                            
-                    }
-                })
+                ToolbarItem(placement: .navigationBarLeading, content: {EditButton()})
             }
                     .alert(Text(alertToShow), isPresented: $alertPresented){
                         Button("Ok"){alertPresented = false}
