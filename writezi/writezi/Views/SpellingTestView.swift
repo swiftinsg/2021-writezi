@@ -171,7 +171,22 @@ struct SpellingTestView: View {
                     )
                 )
             }
+
             .background(Color(.systemGroupedBackground))
+
+            .onAppear {
+                let str = "{\"你好\": \"nihao\"}"
+                let data = Data(str.utf8)
+
+                do {
+                    // make sure this JSON is in the format we expect
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                        pinyinList = json
+                    }
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+            }
         }
     }
 }
