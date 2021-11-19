@@ -68,7 +68,7 @@ struct SpellingTestView: View {
                     let synth = AVSpeechSynthesizer()
                     synth.speak(utterance)
                 } label: {
-                    HStack{
+                    VStack{
                         Image(systemName: "speaker.wave.3.fill")
                             .imageScale(.large)
                             .foregroundColor(Color.black)
@@ -76,27 +76,10 @@ struct SpellingTestView: View {
                             .padding()
                         
                         if spellingMode == 3 {
-                            if let pinyinList = pinyinList {
-                                var pinYin = ""
-//                                ForEach(Array(spellingList.spellingList[questionNo].word), id: \.self) { character in
-//                                    pinYin.append(String(character))
-//                                    pinYin.append(" ")
-//                                }
-//                                ForEach(Array(spellingList.spellingList[questionNo].word.enumerated()), id: \.offset) { character in
-//                                    pinYin.append(String(character.element))
-//                                }
-//                                for character in spellingList.spellingList[questionNo].word{
-//
-//                                }
-                                
-                                let wording = spellingList.spellingList[questionNo].word
-//                                let arr = wording.map { pinYin += pinyinList[String($0)] ?? "" }
-                                
-//                                print(arr)
-                                
-                                
-//                                Text(pinYin)
-                                
+                            if pinyinList != nil {
+                                Text(getPinyin(word:spellingList.spellingList[questionNo].word))
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 60, weight: .heavy, design: .rounded))
                             }
                         }
                     }
@@ -175,19 +158,33 @@ struct SpellingTestView: View {
             .background(Color(.systemGroupedBackground))
 
             .onAppear {
-                let str = "{\"你好\": \"nihao\"}"
-                let data = Data(str.utf8)
-
-                do {
-                    // make sure this JSON is in the format we expect
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                        pinyinList = json
+                if let path = Bundle.main.path(forResource: "parsed-json", ofType: "json") {
+                    do {
+                        let fileUrl = URL(fileURLWithPath: path)
+                        // Getting data from JSON file using the file URL
+                        let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+                        // make sure this JSON is in the format we expect
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                            pinyinList = json
+                        }
+                    } catch let error as NSError {
+                        print("Failed to load: \(error.localizedDescription)")
                     }
-                } catch let error as NSError {
-                    print("Failed to load: \(error.localizedDescription)")
                 }
             }
         }
+    }
+    
+    func getPinyin (word: String) -> String {
+        if let pinyinList = pinyinList {
+            var string = ""
+            for character in word{
+                string += pinyinList[String(character)] ?? "_"
+                string += " "
+            }
+            return string
+        }
+        return ""
     }
 }
 
