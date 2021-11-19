@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AttemptView: View {
     @ObservedObject public var reference: DataManager
+    @ObservedObject public var dataManager = DataManager()
     @State public var spellingListIdx: Int
     @State private var startSpelling = false
     @State private var spellingMode:Int = 2
@@ -78,7 +79,7 @@ struct AttemptView: View {
             .buttonStyle(.bordered)
             .controlSize(.large)
             Button{
-                previousSpellingTest = true
+                showingPreviousSpellingTest = true
             }label: {
                 Text("View Previous Attempt")
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -105,7 +106,7 @@ struct AttemptView: View {
             PastSpellingView(spellingList: reference.lists[spellingListIdx])
         }
         .sheet(isPresented: $showingEditView){
-            EditSpellingView(listNumberToEdit: spellingListIdx)
+            EditSpellingView(spellingList: reference, listNumberToEdit: spellingListIdx)
         }
         
     }

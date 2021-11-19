@@ -7,8 +7,8 @@
 import SwiftUI
 
 struct EditSpellingView: View {
-    @State public var spellingList = DataManager()
-    @State public var reference:DataManager?
+    @ObservedObject public var spellingList: DataManager = DataManager()
+    var reference:DataManager?
     @State public var listNumberToEdit: Int
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
@@ -60,7 +60,9 @@ struct EditSpellingView: View {
                     }
                     
                     if (spellingList.lists[listNumberToEdit].name != ""){
+                        spellingList.lists[listNumberToEdit].lastEdited = Date()
                         spellingList.save()
+                        print(reference)
                         reference?.load()
                         presentationMode.wrappedValue.dismiss()
                     } else {
