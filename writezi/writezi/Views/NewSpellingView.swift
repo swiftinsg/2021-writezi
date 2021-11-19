@@ -15,6 +15,7 @@ func isAllChinese(string: String) -> Bool{
     return result
 }
 struct NewSpellingView: View {
+    @State var suffix = ""
     @State public var newSpellingList = SpellingList(spellingList: [SpellingWord()], name: "")
     @State public var spellingList = DataManager()
     @State public var reference:DataManager?
@@ -61,7 +62,17 @@ struct NewSpellingView: View {
                             //check if the word is empty
                             if(newSpellingList.spellingList[i].word == ""){
                                 //Alert
-                                alertToShow = "The \(i+1)th word is empty!"
+                                
+                                if i%10 == 0{
+                                    suffix = "st"
+                                } else if i%10 == 1{
+                                    suffix = "nd"
+                                } else if i%10 == 2{
+                                    suffix = "rd"
+                                } else {
+                                    suffix = "th"
+                                }
+                                alertToShow = "The \(i+1)\(suffix) word is empty!"
                                 alertPresented = true
                                 return
                             }
@@ -69,7 +80,16 @@ struct NewSpellingView: View {
                             //check for chinese
                             if(!isAllChinese(string: newSpellingList.spellingList[i].word)){
                                 //Alert
-                                alertToShow = "The \(i+1)th word is not Chinese!"
+                                if i%10 == 0{
+                                    suffix = "st"
+                                } else if i%10 == 1{
+                                    suffix = "nd"
+                                } else if i%10 == 2{
+                                    suffix = "rd"
+                                } else {
+                                    suffix = "th"
+                                }
+                                alertToShow = "The \(i+1)\(suffix) word is not Chinese!"
                                 alertPresented = true
                                 return
                             }

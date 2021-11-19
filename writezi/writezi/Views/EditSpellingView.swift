@@ -12,6 +12,7 @@ struct EditSpellingView: View {
     @State public var listNumberToEdit: Int
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
+    @State var suffix = ""
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -52,18 +53,34 @@ struct EditSpellingView: View {
                         
                        //validate the list
                        for i in 0..<spellingList.lists[listNumberToEdit].spellingList.count{
-                           //check if the word is empty
+                           if i%10 == 0{
+                               suffix = "st"
+                           } else if i%10 == 1{
+                               suffix = "nd"
+                           } else if i%10 == 2{
+                               suffix = "rd"
+                           } else {
+                               suffix = "th"
+                           }
                            if(spellingList.lists[listNumberToEdit].spellingList[i].word == ""){
                                //Alert
-                               alertToShow = "The \(i+1)th word is empty!"
+                               alertToShow = "The \(i+1)\(suffix) word is empty!"
                                alertPresented = true
                                return
                            }
                            
                            //check for chinese
                            if(!isAllChinese(string: spellingList.lists[listNumberToEdit].spellingList[i].word)){
-                               //Alert
-                               alertToShow = "The \(i+1)th word is not Chinese!"
+                               if i%10 == 0{
+                                   suffix = "st"
+                               } else if i%10 == 1{
+                                   suffix = "nd"
+                               } else if i%10 == 2{
+                                   suffix = "rd"
+                               } else {
+                                   suffix = "th"
+                               }
+                               alertToShow = "The \(i+1)\(suffix) word is not Chinese!"
                                alertPresented = true
                                return
                            }
