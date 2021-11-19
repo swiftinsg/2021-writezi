@@ -25,10 +25,14 @@ struct ScoreFinalizationView: View {
                     .padding()
                     .frame(width: UIScreen.main.bounds.size.width * 0.7)
                 if image != nil {
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
+                    Button{
+                        self.showImagePicker = true
+                    } label: {
+                        image?
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                    }
                 } else {
                     Button{
                         self.showImagePicker = true
