@@ -21,7 +21,7 @@ struct ScoreFinalizationView: View {
         NavigationLink(destination: ContentView(spellingList: dataManager).navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
         NavigationView {
             VStack{
-                CircularProgressView(fullscore: CGFloat(spellingList.spellingList.count), score: CGFloat(spellingList.pastResult!.score))
+                CircularProgressView(fullscore: CGFloat(dataManager.lists[spellingList.number].spellingList.count), score: CGFloat(dataManager.lists[spellingList.number].pastResult!.score))
                     .padding()
                     .frame(width: UIScreen.main.bounds.size.width * 0.7)
                 if edit == false {
@@ -57,9 +57,8 @@ struct ScoreFinalizationView: View {
                     HStack {
                         if edit {
                             Button{
-                                if dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct == false {
-                                    print("updated correct")
-                                    dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct = true
+                                if list.correct == false {
+                                    dataManager.lists[spellingList.number].pastResult!.results[list.number].correct = true
                                     dataManager.lists[spellingList.number].pastResult!.score += 1
                                     dataManager.save()
                                 }
@@ -73,9 +72,8 @@ struct ScoreFinalizationView: View {
                         Spacer()
                         if edit{
                             Button{
-                                if dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct == true {
-                                    print("updated wrong")
-                                    dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct = false
+                                if list.correct == true {
+                                    dataManager.lists[spellingList.number].pastResult!.results[list.number].correct = false
                                     dataManager.lists[spellingList.number].pastResult!.score -= 1
                                     dataManager.save()
                                 }

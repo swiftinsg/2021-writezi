@@ -15,6 +15,9 @@ class DataManager: ObservableObject {
     func save() {
         for i in 0..<lists.count{
             lists[i].number = i
+            for j in 0..<(lists[i].pastResult?.results.count ?? 0){
+                lists[i].pastResult?.results[j].number = j
+            }
         }
         let archiveURL = getArchiveURL()
         let propertyListEncoder = PropertyListEncoder()
@@ -39,5 +42,6 @@ class DataManager: ObservableObject {
     
     init(){
         load()
+        save()
     }
 }

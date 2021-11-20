@@ -34,6 +34,7 @@ struct Result: Codable {
 struct WordResult: Codable, Identifiable{
     var word: String
     var correct: Bool
+    var number: Int = 0
     var id = UUID()
 }
 
