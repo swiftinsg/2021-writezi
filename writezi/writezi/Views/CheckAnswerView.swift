@@ -36,18 +36,21 @@ struct CheckAnswerView: View {
                         VStack{
                             Spacer()
                             Spinner(isAnimating: true, style: .large, color: .white)
+                            Text("Saving")
+                                .foregroundColor(.white)
                             Spacer()
                             Text("Tap to continue")
                                 .foregroundColor(.white)
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.70))
+                        .background(Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.75))
                     }
-                    VStack {
+                    VStack(alignment: .center) {
                         Spacer()
                         Text("\(spellingList.spellingList[questionNo].word)")
                             .font(.system(size: 75))
+                            .bold()
                         Spacer()
                         HStack{
                             Button{
