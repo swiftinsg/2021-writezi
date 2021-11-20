@@ -38,9 +38,6 @@ struct CheckAnswerView: View {
                             Spinner(isAnimating: true, style: .large, color: .white)
                             Text("Saving")
                                 .foregroundColor(.white)
-                            Spacer()
-                            Text("Tap to continue")
-                                .foregroundColor(.white)
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
@@ -56,7 +53,11 @@ struct CheckAnswerView: View {
                             Button{
                                 //Save data
                                 dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
-                                dataManager.save()
+                                dataManager.save {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        finish = true
+                                    }
+                                }
                                 if questionNo != spellingList.spellingList.count-1 {
                                     questionNo += 1
                                 } else {
@@ -76,7 +77,11 @@ struct CheckAnswerView: View {
                                 //Save data
                                 dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
                                 dataManager.lists[spellingList.number].pastResult?.score += 1
-                                dataManager.save()
+                                dataManager.save {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        finish = true
+                                    }
+                                }
                                 if questionNo != spellingList.spellingList.count-1 {
                                     questionNo += 1
                                 } else {
@@ -126,13 +131,6 @@ struct CheckAnswerView: View {
                 )
             }
             .background(Color(.systemGroupedBackground))
-            .onTapGesture{
-                print("tapped")
-                if saving {
-                    dataManager.save()
-                    finish = true
-                }
-            }
         }
     }
 }

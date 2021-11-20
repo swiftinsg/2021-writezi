@@ -12,7 +12,7 @@ class DataManager: ObservableObject {
         return documentsDirectory.appendingPathComponent(plistName)
     }
     
-    func save() {
+    func save(callback: (() -> Void)? = nil) {
         for i in 0..<lists.count{
             lists[i].number = i
             for j in 0..<(lists[i].pastResult?.results.count ?? 0){
@@ -23,6 +23,7 @@ class DataManager: ObservableObject {
         let propertyListEncoder = PropertyListEncoder()
         let encodedList = try? propertyListEncoder.encode(lists)
         try? encodedList?.write(to: archiveURL, options: .noFileProtection)
+        callback?()
     }
     
     func load() {

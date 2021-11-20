@@ -64,6 +64,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2CB7E327493AE00074730D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				2624D9142748E25100F958F8 /* LoadingView.swift */,
+				26B7158327476FCB00E35E1B /* ImagePicker.swift */,
+				26A959FC2745363100319126 /* CircularProgressView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		3A6E5E99273BA942006F6AF1 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 				3A6E5EA5273BA943006F6AF1 /* writeziApp.swift */,
 				6A29D5F627477FB800C86D8F /* Data */,
 				3AD02DA527467C01001B1458 /* Utilities */,
+				3A2CB7E327493AE00074730D /* SubViews */,
 				3AD02D9E2745E8DC001B1458 /* Views */,
 				3AD02D9F2745E8EC001B1458 /* Structs */,
 				3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */,
@@ -115,7 +126,6 @@
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				26A959FA27452B9700319126 /* ScoreFinalizationView.swift */,
-				26B7158327476FCB00E35E1B /* ImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,9 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				3AD02DA12745ED68001B1458 /* DataManager.swift */,
-				26A959FC2745363100319126 /* CircularProgressView.swift */,
-				2624D9142748E25100F958F8 /* LoadingView.swift */,
-				2624D9102747D15600F958F8 /* EncouragementMessages.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
