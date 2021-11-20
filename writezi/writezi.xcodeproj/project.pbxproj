@@ -124,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB46A7C273F55E4008AE14E /* Spelling.swift */,
+				2624D9102747D15600F958F8 /* EncouragementMessages.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";

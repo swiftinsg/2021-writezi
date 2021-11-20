@@ -53,48 +53,36 @@ struct ScoreFinalizationView: View {
                     .tint(.blue)
                     .buttonStyle(.bordered)
                 }
-                List (spellingList.pastResult!.results) { list in
+                List (dataManager.lists[spellingList.number].pastResult!.results) { list in
                     HStack {
                         if edit {
                             Button{
-                                print("correct")
-                                if dataManager.lists[spellingList.number].pastResult?.results[spellingList.number].correct == false {
+                                if dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct == false {
                                     print("updated correct")
-                                    dataManager.lists[spellingList.number].pastResult?.results[spellingList.number].correct = true
-                                    dataManager.lists[spellingList.number].pastResult?.score += 1
+                                    dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct = true
+                                    dataManager.lists[spellingList.number].pastResult!.score += 1
+                                    dataManager.save()
                                 }
                             } label: {
-                                if list.correct {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.green)
-                                } else {
-                                    Image(systemName: "circle")
-                                        .foregroundColor(.green)
-                                }
+                                Image(systemName: list.correct ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(.green)
                             }
-                            .background(.green)
                             .buttonStyle(BorderlessButtonStyle())
                         }
                         Text("\(list.word)")
                         Spacer()
                         if edit{
                             Button{
-                                print("wrong")
-                                if dataManager.lists[spellingList.number].pastResult?.results[spellingList.number].correct == true {
+                                if dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct == true {
                                     print("updated wrong")
-                                    dataManager.lists[spellingList.number].pastResult?.results[spellingList.number].correct = false
-                                    dataManager.lists[spellingList.number].pastResult?.score -= 1
+                                    dataManager.lists[spellingList.number].pastResult!.results[spellingList.number].correct = false
+                                    dataManager.lists[spellingList.number].pastResult!.score -= 1
+                                    dataManager.save()
                                 }
                             } label: {
-                                if list.correct == false {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.red)
-                                } else {
-                                    Image(systemName: "circle")
-                                        .foregroundColor(.red)
-                                }
+                                Image(systemName: !list.correct ? "xmark.circle.fill" : "circle")
+                                    .foregroundColor(.red)
                             }
-                            .background(.green)
                             .buttonStyle(BorderlessButtonStyle())
                         }
                     }
