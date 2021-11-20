@@ -31,14 +31,15 @@ struct PastSpellingView: View {
                             Text("Attempt Mode: \(spellingList.pastResult!.spellingMode == 1 ? "Timed Practice" : spellingList.pastResult!.spellingMode == 2 ? "Normal Practice" : "Hinted Practice")").font(.system(size: 15))
                         }
                         Section(header: Text("Words")) {
-                            List{
-                                ForEach (spellingList.pastResult!.results){ result in
-                                    NavigationLink (destination: WordMeaningView(word: result.word)){
-                                        VStack(alignment: .leading) {
+                            ForEach (spellingList.pastResult!.results){ result in
+                                NavigationLink (destination: WordMeaningView(word: result.word)){
+                                    VStack(alignment: .leading) {
+                                        HStack{
+                                            Image(systemName: result.correct ? "xmark.circle.fill" : "checkmark.circle.fill")
+                                                .foregroundColor(Color(red: !result.correct ? 1.0 : 0.0, green: result.correct ? 1.0 : 0.0, blue: 0))
                                             Text(result.word)
                                         }
                                     }
-                                    .listRowBackground(Color(red: !result.correct ? 1.0 : 0.0, green: result.correct ? 1.0 : 0.0, blue: 0, opacity: 0.3))
                                 }
                             }
                         }
