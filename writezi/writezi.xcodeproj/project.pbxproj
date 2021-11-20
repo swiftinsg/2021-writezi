@@ -115,7 +115,6 @@
 				26A8EB0B2743E2920004FEAE /* WordMeaningView.swift */,
 				26A8EB0727433EA30004FEAE /* NewSpellingView.swift */,
 				26A959FA27452B9700319126 /* ScoreFinalizationView.swift */,
-				2624D9102747D15600F958F8 /* EncouragementMessages.swift */,
 				26B7158327476FCB00E35E1B /* ImagePicker.swift */,
 			);
 			path = Views;
@@ -135,6 +134,7 @@
 				3AD02DA12745ED68001B1458 /* DataManager.swift */,
 				26A959FC2745363100319126 /* CircularProgressView.swift */,
 				2624D9142748E25100F958F8 /* LoadingView.swift */,
+				2624D9102747D15600F958F8 /* EncouragementMessages.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

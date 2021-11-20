@@ -149,8 +149,12 @@ struct ScoreFinalizationView: View {
             messageList = fullMarks
         } else if score > 75{
             messageList = AGrade
-        } else if score > 65{
-            messageList = BGrade
+        } else if score > 60{
+            messageList = BCGrade
+        } else if score > 50 {
+            messageList = DGrade
+        } else if score < 50 {
+            messageList = fail
         }
         return messageList[Int.random(in: 0..<messageList.count)]
     }
