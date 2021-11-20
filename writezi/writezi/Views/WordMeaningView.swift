@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WordMeaningView: View {
     
-    var word:String
+    var word: String
     
     var body: some View {
         VStack {

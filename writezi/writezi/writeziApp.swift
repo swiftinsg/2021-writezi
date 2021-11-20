@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct writeziApp: App {
+    init() {
+        // Swizzling
+        UIBezierPath.mx_prepare()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

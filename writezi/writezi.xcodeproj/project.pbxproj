@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25A9555B27493CC8002CD34A /* HanZiAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555A27493CC8002CD34A /* HanZiAnimationView.swift */; };
+		25A9555D27493CE3002CD34A /* HanZiGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555C27493CE3002CD34A /* HanZiGraphic.swift */; };
+		25A9555F27493D0A002CD34A /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555E27493D0A002CD34A /* UIBezierPathExtensions.swift */; };
+		25A9556127493DD7002CD34A /* graphics.jsonl in Resources */ = {isa = PBXBuildFile; fileRef = 25A9556027493DD7002CD34A /* graphics.jsonl */; };
 		2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9102747D15600F958F8 /* EncouragementMessages.swift */; };
 		2624D9152748E25100F958F8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9142748E25100F958F8 /* LoadingView.swift */; };
 		263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263829572744AD2000CDA75B /* SpellingTestView.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25A9555A27493CC8002CD34A /* HanZiAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanZiAnimationView.swift; sourceTree = "<group>"; };
+		25A9555C27493CE3002CD34A /* HanZiGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanZiGraphic.swift; sourceTree = "<group>"; };
+		25A9555E27493D0A002CD34A /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
+		25A9556027493DD7002CD34A /* graphics.jsonl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = graphics.jsonl; sourceTree = "<group>"; };
 		2624D9102747D15600F958F8 /* EncouragementMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementMessages.swift; sourceTree = "<group>"; };
 		2624D9142748E25100F958F8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		263829572744AD2000CDA75B /* SpellingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestView.swift; sourceTree = "<group>"; };
@@ -64,6 +72,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25A9555927493CA5002CD34A /* HanZiAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				25A9555A27493CC8002CD34A /* HanZiAnimationView.swift */,
+				25A9555C27493CE3002CD34A /* HanZiGraphic.swift */,
+				25A9555E27493D0A002CD34A /* UIBezierPathExtensions.swift */,
+			);
+			path = HanZiAnimation;
+			sourceTree = "<group>";
+		};
 		3A2CB7E327493AE00074730D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +117,7 @@
 				3A2CB7E327493AE00074730D /* SubViews */,
 				3AD02D9E2745E8DC001B1458 /* Views */,
 				3AD02D9F2745E8EC001B1458 /* Structs */,
+				25A9555927493CA5002CD34A /* HanZiAnimation */,
 				3A6E5EA9273BA948006F6AF1 /* Assets.xcassets */,
 				3A1E574B2742332E00FC067A /* Colours.xcassets */,
 				3A6E5EAB273BA948006F6AF1 /* Preview Content */,
@@ -150,6 +169,7 @@
 		6A29D5F627477FB800C86D8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				25A9556027493DD7002CD34A /* graphics.jsonl */,
 				6A29D5F72747800300C86D8F /* parsed-json.json */,
 			);
 			path = Data;
@@ -214,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6E5EAD273BA948006F6AF1 /* Preview Assets.xcassets in Resources */,
+				25A9556127493DD7002CD34A /* graphics.jsonl in Resources */,
 				3A1E574C2742332E00FC067A /* Colours.xcassets in Resources */,
 				6A29D5F82747800300C86D8F /* parsed-json.json in Resources */,
 				3A6E5EAA273BA948006F6AF1 /* Assets.xcassets in Resources */,
@@ -229,6 +250,7 @@
 			files = (
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
 				3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */,
+				25A9555F27493D0A002CD34A /* UIBezierPathExtensions.swift in Sources */,
 				26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */,
 				26B7158427476FCB00E35E1B /* ImagePicker.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingView.swift in Sources */,
@@ -236,11 +258,13 @@
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
 				2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
+				25A9555D27493CE3002CD34A /* HanZiGraphic.swift in Sources */,
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
 				26A8EB0A2743D5CF0004FEAE /* AttemptView.swift in Sources */,
 				26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */,
 				3ABD77682747356A0044E324 /* EditSpellingView.swift in Sources */,
 				263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */,
+				25A9555B27493CC8002CD34A /* HanZiAnimationView.swift in Sources */,
 				26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */,
 				26A959FD2745363100319126 /* CircularProgressView.swift in Sources */,
 			);
