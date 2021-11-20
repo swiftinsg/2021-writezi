@@ -142,7 +142,7 @@ struct ScoreFinalizationView: View {
         } else if score > 50 {
             messageList = DGrade
         } else if score < 50 {
-            messageList = fail
+            messageList = FGrade
         }
         return messageList[Int.random(in: 0..<messageList.count)]
     }

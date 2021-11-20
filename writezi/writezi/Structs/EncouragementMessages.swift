@@ -17,12 +17,10 @@ var fullMarks = [
 var AGrade = [
     "Good job! Strive for excellence!",
 ]
-var BGrade = [
+var BCGrade = [
     "Work harder! Just a little more and you will be there!"
 ]
-var CGrade = [
-    ""
-]
+
 var DGrade = [
     "very bad"
 ]
