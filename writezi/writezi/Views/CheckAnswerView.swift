@@ -17,6 +17,7 @@ struct CheckAnswerView: View {
     @State private var questionNo = 0
     @State private var finish = false
     @State private var dataManager = DataManager()
+    @State var saving = false
     
     init(spellingList: SpellingList, mode: Int){
         self.spellingList = spellingList
@@ -27,71 +28,75 @@ struct CheckAnswerView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack{
-                if questionNo != spellingList.spellingList.count{
-                    NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
-                    NavigationLink(destination: ScoreFinalizationView(spellingList: dataManager.lists[spellingList.number]).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
-                    Spacer()
-                    Text("\(spellingList.spellingList[questionNo].word)")
-                        .font(.system(size: 75))
-                } else {
-                    Spacer()
-                    Text("\(spellingList.spellingList[questionNo-1].word)")
-                        .font(.system(size: 75))
-                }
-                
-                Spacer()
-                if questionNo == spellingList.spellingList.count {
-                    VStack{
-                        Button {
-                            dataManager.save()
-                            questionNo -= 1
-                            finish = true
-                        } label: {
-                            Text("Finish")
+                NavigationLink(destination: ContentView().navigationBarHidden(true), isActive: self.$exit) { EmptyView() }
+                NavigationLink(destination: ScoreFinalizationView(spellingList: dataManager.lists[spellingList.number]).navigationBarHidden(true), isActive: self.$finish) { EmptyView() }
+                ZStack {
+                    if saving {
+                        VStack{
+                            Spacer()
+                            Spinner(isAnimating: true, style: .large, color: .white)
+                            Spacer()
+                            Text("Tap to continue")
+                                .foregroundColor(.white)
+                            
                         }
-                        .tint(Color("Success"))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
-                        .padding()
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .background(Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.70))
                     }
-                } else {
-                    HStack{
-                        Button{
-                            //Save data
-                            dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
-                            dataManager.save()
-                            questionNo += 1
-                        } label: {
-                            Text("Wrong")
-                                .frame(minWidth: 0, maxWidth: .infinity)
+                    VStack {
+                        Spacer()
+                        Text("\(spellingList.spellingList[questionNo].word)")
+                            .font(.system(size: 75))
+                        Spacer()
+                        HStack{
+                            Button{
+                                //Save data
+                                dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: false))
+                                dataManager.save()
+                                if questionNo != spellingList.spellingList.count-1 {
+                                    questionNo += 1
+                                } else {
+                                    saving = true
+                                }
+                            } label: {
+                                Text("Wrong")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
+                            .disabled(saving)
+                            .tint(Color("Danger"))
+                            .frame(width: UIScreen.main.bounds.size.width * 0.35)
+                            .padding()
+                            .buttonStyle(.bordered)
+                            .controlSize(.large)
+                            Button{
+                                //Save data
+                                dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
+                                dataManager.lists[spellingList.number].pastResult?.score += 1
+                                dataManager.save()
+                                if questionNo != spellingList.spellingList.count-1 {
+                                    questionNo += 1
+                                } else {
+                                    saving = true
+                                }
+                                
+                            } label: {
+                                Text("Correct")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
+                            .disabled(saving)
+                            .tint(Color("Success"))
+                            .frame(width: UIScreen.main.bounds.size.width * 0.35)
+                            .padding()
+                            .buttonStyle(.bordered)
+                            .controlSize(.large)
                         }
-                        .tint(Color("Danger"))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
-                        .padding()
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        Button{
-                            //Save data
-                            dataManager.lists[spellingList.number].pastResult?.results.append(WordResult(word: spellingList.spellingList[questionNo].word, correct: true))
-                            dataManager.lists[spellingList.number].pastResult?.score += 1
-                            dataManager.save()
-                            questionNo += 1
-                        } label: {
-                            Text("Correct")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }
-                        .tint(Color("Success"))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.35)
-                        .padding()
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
                     }
                 }
             }
-            .navigationTitle("Question \(questionNo + 1)")
+            
+            
+            .navigationTitle((questionNo != spellingList.spellingList.count) ? "Question \(questionNo + 1)": "")
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading, content: {
@@ -118,6 +123,13 @@ struct CheckAnswerView: View {
                 )
             }
             .background(Color(.systemGroupedBackground))
+            .onTapGesture{
+                print("tapped")
+                if saving {
+                    dataManager.save()
+                    finish = true
+                }
+            }
         }
     }
 }

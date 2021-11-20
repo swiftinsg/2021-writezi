@@ -19,7 +19,7 @@ struct AttemptView: View {
     @State private var selectedTime = 30
     
     var body: some View {
-        VStack(){
+        VStack{
             NavigationLink(destination: SpellingTestView(
                 spellingMode: spellingMode,
                 spellingList: reference.lists[spellingListIdx],
@@ -27,8 +27,8 @@ struct AttemptView: View {
                 fulltime: selectedTime, timeRemaining: $selectedTime
             ).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
             Text("Last Updated: \(reference.lists[spellingListIdx].lastEdited.formatted(date: .long, time: .shortened))")
-                .frame(alignment: .leading)
-                .padding(10)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 30)
             List{
                 Section (header: Text("Words")){
                     ForEach (reference.lists[spellingListIdx].spellingList){ list in

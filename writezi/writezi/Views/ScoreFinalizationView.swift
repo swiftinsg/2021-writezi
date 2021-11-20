@@ -23,7 +23,8 @@ struct ScoreFinalizationView: View {
                 CircularProgressView(fullscore: CGFloat(spellingList.spellingList.count), score: CGFloat(spellingList.pastResult!.score))
                     .padding()
                     .frame(width: UIScreen.main.bounds.size.width * 0.7)
-                Text(encouragementMessage(score:Int(dataManager.lists[spellingList.number].pastResult!.score/dataManager.lists[spellingList.number].spellingList.count)))
+                Text(encouragementMessage(score:Int(dataManager.lists[spellingList.number].pastResult!.score/dataManager.lists[spellingList.number].spellingList.count*100)))
+                    .padding()
                 if image != nil {
                     Button{
                         self.showImagePicker = true
@@ -84,7 +85,11 @@ struct ScoreFinalizationView: View {
     func encouragementMessage(score: Int) -> String{
         var messageList = [""]
         if score == 100{
-            messageList = [""]
+            messageList = fullMarks
+        } else if score > 75{
+            messageList = AGrade
+        } else if score > 65{
+            messageList = BGrade
         }
         return messageList[Int.random(in: 0..<messageList.count)]
     }

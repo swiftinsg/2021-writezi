@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9102747D15600F958F8 /* EncouragementMessages.swift */; };
+		2624D9152748E25100F958F8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9142748E25100F958F8 /* LoadingView.swift */; };
 		263829582744AD2000CDA75B /* SpellingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263829572744AD2000CDA75B /* SpellingTestView.swift */; };
 		26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0727433EA30004FEAE /* NewSpellingView.swift */; };
 		26A8EB0A2743D5CF0004FEAE /* AttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB092743D5CE0004FEAE /* AttemptView.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		2624D9102747D15600F958F8 /* EncouragementMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementMessages.swift; sourceTree = "<group>"; };
+		2624D9142748E25100F958F8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		263829572744AD2000CDA75B /* SpellingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestView.swift; sourceTree = "<group>"; };
 		26A8EB0727433EA30004FEAE /* NewSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpellingView.swift; sourceTree = "<group>"; };
 		26A8EB092743D5CE0004FEAE /* AttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				3AD02DA12745ED68001B1458 /* DataManager.swift */,
 				26A959FC2745363100319126 /* CircularProgressView.swift */,
+				2624D9142748E25100F958F8 /* LoadingView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				26A959FB27452B9700319126 /* ScoreFinalizationView.swift in Sources */,
 				26B7158427476FCB00E35E1B /* ImagePicker.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingView.swift in Sources */,
+				2624D9152748E25100F958F8 /* LoadingView.swift in Sources */,
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
 				2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,

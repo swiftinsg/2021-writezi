@@ -15,13 +15,13 @@ var fullMarks = [
     "Well Done! "
 ]
 var AGrade = [
-    "good "
+    "Good job! Strive for excellence!",
 ]
 var BGrade = [
-    "average"
+    "Work harder! Just a little more and you will be there!"
 ]
 var CGrade = [
-    "bad"
+    ""
 ]
 var DGrade = [
     "very bad"
@@ -30,5 +30,7 @@ var EGrade = [
     "fail"
 ]
 var FGrade = [
-    "fail badly"
+    "Better work harder...",
+    "Don't give up! Practice makes perfect!",
+    "You can do it! Just practice more!"
 ]
