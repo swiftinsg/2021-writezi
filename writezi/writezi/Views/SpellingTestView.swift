@@ -79,7 +79,7 @@ struct SpellingTestView: View {
                             if pinyinList != nil {
                                 Text(getPinyin(word:spellingList.spellingList[questionNo].word))
                                     .foregroundColor(.black)
-                                    .font(.system(size: 60, weight: .heavy, design: .rounded))
+                                    .font(.system(size: 60, weight: .heavy))
                             }
                         }
                     }
