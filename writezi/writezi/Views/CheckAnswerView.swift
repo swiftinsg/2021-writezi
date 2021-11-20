@@ -38,6 +38,7 @@ struct CheckAnswerView: View {
                             Spinner(isAnimating: true, style: .large, color: .white)
                             Text("Saving")
                                 .foregroundColor(.white)
+                            Spacer()
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
