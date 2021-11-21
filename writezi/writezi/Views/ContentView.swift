@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            VStack {
                 // Search bar
                 ZStack {
                     Rectangle()
@@ -31,15 +31,15 @@ struct ContentView: View {
                 .padding()
                 
                 //Spelling List
-                List{
+                List {
                     if((searchText == "" ? spellingList.lists:
                             spellingList.lists.filter({ list in
-                            return list.name.contains(searchText)
+                        return list.name.contains(searchText)
                     })).count == 0){
                         Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill").foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
                     }
                     ForEach (searchText == "" ? spellingList.lists:
-                        spellingList.lists.filter({ list in
+                                spellingList.lists.filter({ list in
                         return list.name.contains(searchText)
                     })){ list in
                         NavigationLink (destination: AttemptView(reference: spellingList, spellingListIdx: list.number)){

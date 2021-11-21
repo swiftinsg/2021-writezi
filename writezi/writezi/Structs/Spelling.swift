@@ -11,7 +11,7 @@ import SwiftUI
 struct SpellingList: Identifiable, Codable {
     var lastEdited: Date = Date()
     var created: Date = Date()
-    var spellingList = [SpellingWord]()
+    var words = [SpellingWord]()
     var name: String
     var pastResult: Result? = nil
     var id = UUID()

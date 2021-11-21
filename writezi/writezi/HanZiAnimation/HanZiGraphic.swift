@@ -48,6 +48,16 @@ struct HanZiGraphic: Codable {
         }
     }
     
+    // Empty initialiser for use if no character exists
+    init() {
+        self.character = " "
+        self.strokes = []
+        self.medians = [[[]]]
+        self.strokePaths = []
+        self.medianPaths = []
+        self.medianPathLengths = []
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(character, forKey: .character)
