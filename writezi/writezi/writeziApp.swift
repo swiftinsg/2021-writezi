@@ -20,9 +20,6 @@ struct writeziApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(spellingLists: $spellingListData.spellingLists)
-                .onAppear() {
-                    spellingListData.load()
-                }
         }
     }
 }

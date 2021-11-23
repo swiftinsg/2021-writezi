@@ -27,10 +27,10 @@ struct Result: Codable {
     let dateOfResult: Date
     let spellingMode: SpellingMode
     var results: [WordResult]
+    var image: SomeImage? = nil
     var score: Int {
         return results.reduce(0) { $0 + ($1.correct ? 1 : 0) }
     }
-    var image: SomeImage? = nil
     
     init(dateOfResult: Date, spellingMode: SpellingMode, results: [WordResult], image: SomeImage? = nil) {
         self.dateOfResult = dateOfResult
@@ -51,7 +51,7 @@ struct Result: Codable {
         dateOfResult = try values.decode(Date.self, forKey: .dateOfResult)
         spellingMode = try values.decode(SpellingMode.self, forKey: .spellingMode)
         results = try values.decode([WordResult].self, forKey: .results)
-        image = try values.decode(SomeImage.self, forKey: .image)
+        image = try values.decodeIfPresent(SomeImage.self, forKey: .image)
     }
     
     func encode(to encoder: Encoder) throws {

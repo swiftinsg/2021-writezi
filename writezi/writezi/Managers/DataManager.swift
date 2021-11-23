@@ -8,6 +8,9 @@ class DataManager: ObservableObject {
         }
     }
     
+    init() {
+        load()
+    }
     
     let defaultList: [SpellingList] = [SpellingList(words: [SpellingWord(word: "你好")], name: "Example List")]
     
