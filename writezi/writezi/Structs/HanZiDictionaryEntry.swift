@@ -14,7 +14,7 @@ struct HanZiDictionaryEntry: Decodable {
     let decomposition: String
     let etymology: Etymology?
     let radical: String
-    let matches: [[Int]]
+    let matches: [[Int]?]
 }
 
 struct Etymology: Decodable {
