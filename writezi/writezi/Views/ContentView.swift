@@ -33,26 +33,29 @@ struct ContentView: View {
                 .cornerRadius(13)
                 .padding()
                 
-                //Spelling List
+                let suitableSpellingLists = spellingLists.filter { spellingList in
+                    return spellingList.name.contains(searchText)
+                }
+                
+                if((searchText.isEmpty ? spellingLists : suitableSpellingLists).count == 0) {
+                    Text("No Spelling Lists Found!")
+                        .foregroundColor(.gray)
+                        .padding(.top)
+                }
+                
+                // List of Spelling Lists
                 List {
-                    
-                    let suitableSpellingLists = spellingLists.filter { spellingList in
-                        return spellingList.name.contains(searchText)
-                    }
-                    
-                    if((searchText == "" ? spellingLists : suitableSpellingLists).count == 0) {
-                        Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill").foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
-                    }
-                    
                     ForEach($spellingLists) { $spellingList in
                         // Nav Link to preview of spelling list
-                        NavigationLink (destination: SpellingPreviewView(spellingList: $spellingList)){
-                            VStack(alignment: .leading) {
-                                Text(spellingList.name)
-                                    .bold()
-                                spellingList.pastResult?.dateOfResult == nil ?
-                                Text("Not Tested Yet") :
-                                Text("Last Test: \(spellingList.pastResult?.dateOfResult.formatted(date: .long, time: .shortened) ?? Date().formatted(date: .long, time: .shortened))")
+                        if spellingList.name.contains(searchText) || searchText.isEmpty {
+                             NavigationLink (destination: SpellingPreviewView(spellingList: $spellingList)){
+                                 VStack(alignment: .leading) {
+                                    Text(spellingList.name)
+                                        .bold()
+                                    spellingList.pastResult?.dateOfResult == nil ?
+                                    Text("Not Tested Yet") :
+                                    Text("Last Test: \(spellingList.pastResult?.dateOfResult.formatted(date: .long, time: .shortened) ?? Date().formatted(date: .long, time: .shortened))")
+                                }
                             }
                         }
                     }
