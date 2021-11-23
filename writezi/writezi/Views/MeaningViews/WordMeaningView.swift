@@ -24,11 +24,15 @@ struct WordMeaningView: View {
                 HStack {
                     Spacer(minLength: 64)
                     ForEach(0..<word.count, id: \.self) { charIndex in
-                        NavigationLink(destination: CharacterMeaningView(character: Array(word)[charIndex])) {
-                            HanZiAnimationView(character: Array(word)[charIndex], paused: $pauseStates[charIndex])
+                        VStack {
+                            Text(String(Array(word)[charIndex]).pinyin)
+                                .font(.title)
+                            NavigationLink(destination: CharacterMeaningView(character: Array(word)[charIndex])) {
+                                HanZiAnimationView(character: Array(word)[charIndex], paused: $pauseStates[charIndex])
+                            }
                         }
                     }
-                }.padding()
+                }
             }
             Spacer()
             Text(word)

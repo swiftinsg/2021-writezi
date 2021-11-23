@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State public var searchText = ""
-    @ObservedObject public var spellingList = DataManager()
-    @State public var newSpellingList = false
+    @Binding var spellingLists: [SpellingList]
+    
+    @State var contentViewPresented: Bool = true
+    
+    @State var searchText = ""
+    @State var newSpellingList = false
     
     var body: some View {
         NavigationView{
@@ -32,29 +35,29 @@ struct ContentView: View {
                 
                 //Spelling List
                 List {
-                    if((searchText == "" ? spellingList.lists:
-                            spellingList.lists.filter({ list in
-                        return list.name.contains(searchText)
-                    })).count == 0){
+                    
+                    let suitableSpellingLists = spellingLists.filter { spellingList in
+                        return spellingList.name.contains(searchText)
+                    }
+                    
+                    if((searchText == "" ? spellingLists : suitableSpellingLists).count == 0) {
                         Label("No Spelling Lists Found!", systemImage: "exclamationmark.triangle.fill").foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
                     }
-                    ForEach (searchText == "" ? spellingList.lists:
-                                spellingList.lists.filter({ list in
-                        return list.name.contains(searchText)
-                    })){ list in
-                        NavigationLink (destination: AttemptView(reference: spellingList, spellingListIdx: list.number)){
+                    
+                    ForEach($spellingLists) { $spellingList in
+                        // Nav Link to preview of spelling list
+                        NavigationLink (destination: SpellingPreviewView(spellingList: $spellingList)){
                             VStack(alignment: .leading) {
-                                Text(list.name)
+                                Text(spellingList.name)
                                     .bold()
-                                list.pastResult?.dateOfResult == nil ?
+                                spellingList.pastResult?.dateOfResult == nil ?
                                 Text("Not Tested Yet") :
-                                Text("Last Test: \(list.pastResult?.dateOfResult.formatted(date: .long, time: .shortened) ?? Date().formatted(date: .long, time: .shortened))")
+                                Text("Last Test: \(spellingList.pastResult?.dateOfResult.formatted(date: .long, time: .shortened) ?? Date().formatted(date: .long, time: .shortened))")
                             }
                         }
                     }
                     .onDelete { indexset in
-                        spellingList.lists.remove(atOffsets: indexset)
-                        spellingList.save()
+                        spellingLists.remove(atOffsets: indexset)
                     }
                 }
                 
@@ -74,7 +77,7 @@ struct ContentView: View {
             .navigationTitle(Text("Spelling"))
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .sheet(isPresented: $newSpellingList){
-                NewSpellingView(reference: spellingList)
+                NewSpellingView(spellingLists: $spellingLists)
             }
         }
     }
@@ -82,7 +85,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(spellingLists: .constant([SpellingList(name: "Test List")]))
     }
 }
 

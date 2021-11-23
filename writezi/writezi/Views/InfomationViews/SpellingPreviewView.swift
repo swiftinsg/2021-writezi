@@ -7,31 +7,28 @@
 
 import SwiftUI
 
-struct AttemptView: View {
-    @ObservedObject public var reference: DataManager
-    @ObservedObject public var dataManager = DataManager()
-    @State public var spellingListIdx: Int
-    @State private var startSpelling = false
-    @State private var spellingMode:Int = 2
-    @State private var showPreviousSpellingTest = false
-    @State private var showingEditView = false
-    @State private var chooseTime = false
-    @State private var selectedTime = 30
+struct SpellingPreviewView: View {
+    @Binding var spellingList: SpellingList
+    
+    @State var spellingMode: SpellingMode = .normal
+    @State var selectedTime = 30
+    
+    @State var startSpelling = false
+    
+    @State var showPreviousSpellingTest = false
+    @State var showingEditView = false
     
     var body: some View {
         VStack{
-            NavigationLink(destination: SpellingTestView(
-                spellingMode: spellingMode,
-                spellingList: reference.lists[spellingListIdx],
-                
-                fulltime: selectedTime, timeRemaining: $selectedTime
-            ).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
-            Text("Last Updated: \(reference.lists[spellingListIdx].lastEdited.formatted(date: .long, time: .shortened))")
+            NavigationLink(destination: TestSpellingView(spellingList: $spellingList, selectedTime: selectedTime, spellingMode: spellingMode).navigationBarHidden(true), isActive: self.$startSpelling) { EmptyView() }
+            
+            Text("Last Updated: \(spellingList.lastEdited.formatted(date: .long, time: .shortened))")
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 30)
-            List{
-                Section (header: Text("Words")){
-                    ForEach (reference.lists[spellingListIdx].words){ list in
+            
+            List {
+                Section (header: Text("Words")) {
+                    ForEach (spellingList.words){ list in
                         NavigationLink (destination: WordMeaningView(word: list.word)){
                             VStack(alignment: .leading) {
                                 Text(list.word)
@@ -42,13 +39,13 @@ struct AttemptView: View {
                 Section(header: Text("Mode")) {
                     Picker("Mode of spelling", selection: $spellingMode) {
                         Text("Timed Practice")
-                            .tag(1)
+                            .tag(SpellingMode.timed)
                         Text("Normal Practice")
-                            .tag(2)
+                            .tag(SpellingMode.normal)
                         Text("Hinted Practice")
-                            .tag(3)
+                            .tag(SpellingMode.hinted)
                     }
-                    if spellingMode == 1 {
+                    if spellingMode == .timed {
                         Picker("Timer", selection: $selectedTime) {
                             Text("10 Seconds")
                                 .tag(10)
@@ -67,7 +64,7 @@ struct AttemptView: View {
                 }
             }
             Spacer()
-            Button{
+            Button {
                 startSpelling = true
             } label: {
                 Text("Start")
@@ -77,7 +74,8 @@ struct AttemptView: View {
             .tint(.green)
             .buttonStyle(.bordered)
             .controlSize(.large)
-            Button{
+            
+            Button {
                 showPreviousSpellingTest = true
             }label: {
                 Text("View Previous Attempt")
@@ -90,7 +88,7 @@ struct AttemptView: View {
             .controlSize(.large)
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle(reference.lists[spellingListIdx].name)
+        .navigationTitle(spellingList.name)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button {
@@ -102,10 +100,10 @@ struct AttemptView: View {
             })
         }
         .sheet(isPresented: $showPreviousSpellingTest){
-            PastSpellingView(spellingList: reference.lists[spellingListIdx])
+            PastSpellingResultView(spellingList: $spellingList)
         }
         .sheet(isPresented: $showingEditView){
-            EditSpellingView(spellingList: reference, listNumberToEdit: spellingListIdx)
+            EditSpellingView(spellingList: $spellingList)
         }
         
     }
@@ -113,6 +111,6 @@ struct AttemptView: View {
 
 struct AttemptView_Previews: PreviewProvider {
     static var previews: some View {
-        AttemptView(reference: DataManager(), spellingListIdx: 0)
+        SpellingPreviewView(spellingList: .constant(SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")))
     }
 }

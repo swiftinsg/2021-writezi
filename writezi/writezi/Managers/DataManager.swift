@@ -2,7 +2,13 @@ import Foundation
 import SwiftUI
 
 class DataManager: ObservableObject {
-    @Published var lists = [SpellingList]()
+    @Published var spellingLists = [SpellingList]() {
+        didSet {
+            save()
+        }
+    }
+    
+    
     let defaultList: [SpellingList] = [SpellingList(words: [SpellingWord(word: "你好")], name: "Example List")]
     
     func getArchiveURL() -> URL {
@@ -12,18 +18,11 @@ class DataManager: ObservableObject {
         return documentsDirectory.appendingPathComponent(plistName)
     }
     
-    func save(callback: (() -> Void)? = nil) {
-        for i in 0..<lists.count{
-            lists[i].number = i
-            for j in 0..<(lists[i].pastResult?.results.count ?? 0){
-                lists[i].pastResult?.results[j].number = j
-            }
-        }
+    func save() {
         let archiveURL = getArchiveURL()
         let propertyListEncoder = PropertyListEncoder()
-        let encodedList = try? propertyListEncoder.encode(lists)
+        let encodedList = try? propertyListEncoder.encode(spellingLists)
         try? encodedList?.write(to: archiveURL, options: .noFileProtection)
-        callback?()
     }
     
     func load() {
@@ -38,11 +37,6 @@ class DataManager: ObservableObject {
         } else {
             finalList = defaultList
         }
-        lists = finalList
-    }
-    
-    init(){
-        load()
-        save()
+        spellingLists = finalList
     }
 }

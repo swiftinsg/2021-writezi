@@ -14,22 +14,22 @@ struct CircularProgressView: View {
     
     var body: some View {
         ZStack {
-                    Circle()
-                        .stroke(lineWidth: 20)
-                        .opacity(0.3)
-                        .foregroundColor(.red)
-                    
-                    Circle()
-                        .trim(from: 0, to: score/fullscore)
-                        .stroke(style: .init(lineWidth: 20.0,
-                                             lineCap: .round,
-                                             lineJoin: .round))
-                        .opacity(1)
-                        .foregroundColor(.green)
-                        .rotationEffect(Angle(degrees: 270))
-            Text("Score: \(Int(score))/\(Int(fullscore)) (\(Int(score/fullscore*100))%)")
+            Circle()
+                .stroke(lineWidth: 20)
+                .opacity(0.3)
+                .foregroundColor(.red)
+            
+            Circle()
+                .trim(from: 0, to: score/fullscore)
+                .stroke(style: .init(lineWidth: 20.0,
+                                     lineCap: .round,
+                                     lineJoin: .round))
+                .opacity(1)
+                .foregroundColor(.green)
+                .rotationEffect(Angle(degrees: 270))
+            Text("Score: \(Int(score))/\(Int(fullscore)) (\(Int(round(score/fullscore*100)))%)")
                 .font(.title2)
-                }
+        }
     }
 }
 

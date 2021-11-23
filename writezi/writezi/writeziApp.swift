@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct writeziApp: App {
+    
+    @ObservedObject var spellingListData = DataManager()
+    
     init() {
         // Swizzling
         UIBezierPath.mx_prepare()
@@ -16,7 +19,10 @@ struct writeziApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(spellingLists: $spellingListData.spellingLists)
+                .onAppear() {
+                    spellingListData.load()
+                }
         }
     }
 }

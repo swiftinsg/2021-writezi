@@ -20,7 +20,7 @@ struct CharacterMeaningView: View {
                 }
             
             HStack {
-                Button{
+                Button {
                     paused.toggle()
                 } label: {
                     Image(systemName: paused ? "play" : "pause")
@@ -29,7 +29,7 @@ struct CharacterMeaningView: View {
                 .tint(paused ? .green : .red)
                 .buttonStyle(.bordered)
                 
-                Button{
+                Button {
                     reset.toggle()
                 } label: {
                     Image(systemName: "arrow.clockwise")

@@ -5,6 +5,7 @@
 //  Created by jun hao on 16/11/21.
 //
 import SwiftUI
+
 func isAllChinese(string: String) -> Bool{
     var result = true
     string.forEach { char in
@@ -14,30 +15,27 @@ func isAllChinese(string: String) -> Bool{
     }
     return result
 }
+
 struct NewSpellingView: View {
-    @State var suffix = ""
+    @Binding public var spellingLists: [SpellingList]
     @State public var newSpellingList = SpellingList(words: [SpellingWord()], name: "")
-    @State public var spellingList = DataManager()
-    @State public var reference: DataManager?
+    
+    @State var suffix = ""
     @State private var alertToShow : String = ""
     @State private var alertPresented : Bool = false
+    
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView{
-            Form{
-                Section (header: Text("Title")){
+            Form {
+                Section(header: Text("Title")) {
                     TextField("Title of Spelling List", text: $newSpellingList.name )
                 }
                 
-                Section (header: HStack{
+                Section(header: HStack {
                     Text("Words")
                     Spacer()
-                    Button{
-                        newSpellingList.words.append(SpellingWord())
-                    } label : {
-                        Image(systemName: "plus")
-                    }
-                    
+                    Button { newSpellingList.words.append(SpellingWord()) } label : { Image(systemName: "plus") }
                 }){
                     ForEach($newSpellingList.words) { $spellingList in
                         TextField("Word", text: $spellingList.word)
@@ -56,10 +54,10 @@ struct NewSpellingView: View {
                             alertPresented = true
                             return
                         }
-                        //validate the list
+                        // Validate the list
                         for i in 0..<newSpellingList.words.count{
                             
-                            //check if the word is empty
+                            // Check if the word is empty
                             if(newSpellingList.words[i].word == ""){
                                 //Alert
                                 
@@ -77,9 +75,9 @@ struct NewSpellingView: View {
                                 return
                             }
                             
-                            //check for chinese
+                            // Check for chinese
                             if(!isAllChinese(string: newSpellingList.words[i].word)){
-                                //Alert
+                                // Alert
                                 if i%10 == 0{
                                     suffix = "st"
                                 } else if i%10 == 1{
@@ -96,12 +94,10 @@ struct NewSpellingView: View {
                         }
                         
                         if (newSpellingList.name != ""){
-                            spellingList.lists.append(newSpellingList)
-                            spellingList.save()
-                            reference?.load()
+                            spellingLists.append(newSpellingList)
                             presentationMode.wrappedValue.dismiss()
                         } else {
-                            //Alert
+                            // Alert
                             alertToShow = "Spelling List Title Cannot Be Empty!"
                             alertPresented = true
                         }
@@ -113,7 +109,6 @@ struct NewSpellingView: View {
             }
             .alert(Text(alertToShow), isPresented: $alertPresented){
                 Button("Ok"){alertPresented = false}
-                
             }
         }
     }
@@ -122,10 +117,10 @@ struct NewSpellingView: View {
 struct NewSpellingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            NewSpellingView()
+            NewSpellingView(spellingLists: .constant([SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")]))
                 .previewInterfaceOrientation(.portrait)
-            NewSpellingView()
-                .previewInterfaceOrientation(.portrait)
+            //            NewSpellingView(spellingLists: .constant([SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")]))
+            //                .previewInterfaceOrientation(.portrait)
         }
     }
 }

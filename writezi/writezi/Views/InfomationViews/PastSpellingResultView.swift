@@ -7,19 +7,17 @@
 
 import SwiftUI
 
-struct PastSpellingView: View {
+struct PastSpellingResultView: View {
     
-    var spellingList:SpellingList
+    @Binding var spellingList: SpellingList
     
     var body: some View {
         NavigationView{
             VStack{
                 if spellingList.pastResult == nil{
-                    VStack(spacing: 10){
-                        Image(systemName: "externaldrive.fill.badge.xmark")
-                            .font(.system(size: 50.0))
-                        Text("No previous attempt for this spelling found.")
-                    }.padding()
+                    Text("No previous attempt for this spelling found.")
+                        .foregroundColor(.gray)
+                        .background(.white)
                 } else {
                     Spacer()
                     CircularProgressView(fullscore: CGFloat(spellingList.pastResult?.results.count ?? 0), score: CGFloat(spellingList.pastResult?.score ?? 0))
@@ -28,7 +26,7 @@ struct PastSpellingView: View {
                     List{
                         Section(header: Text("Details")) {
                             Text("Attempt Date: \(spellingList.pastResult!.dateOfResult)").font(.system(size: 15))
-                            Text("Attempt Mode: \(spellingList.pastResult!.spellingMode == 1 ? "Timed Practice" : spellingList.pastResult!.spellingMode == 2 ? "Normal Practice" : "Hinted Practice")").font(.system(size: 15))
+                            Text("Attempt Mode: \(spellingList.pastResult!.spellingMode == .timed ? "Timed Practice" : spellingList.pastResult!.spellingMode == .normal ? "Normal Practice" : "Hinted Practice")").font(.system(size: 15))
                         }
                         Section(header: Text("Words")) {
                             ForEach (spellingList.pastResult!.results){ result in
@@ -36,7 +34,7 @@ struct PastSpellingView: View {
                                     VStack(alignment: .leading) {
                                         HStack{
                                             Image(systemName: result.correct ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                                .foregroundColor(Color(red: !result.correct ? 1.0 : 0.0, green: result.correct ? 1.0 : 0.0, blue: 0))
+                                                .foregroundColor(result.correct ? .green : .red)
                                             Text(result.word)
                                         }
                                     }
@@ -44,8 +42,8 @@ struct PastSpellingView: View {
                             }
                         }
                         Section(header: Text("Archived Image")) {
-                            if(spellingList.pastResult!.Image != nil && spellingList.pastResult!.Image?.photo != nil){
-                                Image(uiImage: UIImage(data: spellingList.pastResult!.Image!.photo)!)
+                            if(spellingList.pastResult!.image != nil && spellingList.pastResult!.image?.photo != nil){
+                                Image(uiImage: UIImage(data: spellingList.pastResult!.image!.photo)!)
                                     .resizable()
                                     .scaledToFit()
                             } else {
@@ -55,8 +53,9 @@ struct PastSpellingView: View {
                     }
                 }
             }
-            .navigationTitle("Previous Attempt")
             .background(Color(.systemGroupedBackground))
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .navigationTitle("Previous Attempt")
             .cornerRadius(10)
         }
         
@@ -65,6 +64,6 @@ struct PastSpellingView: View {
 
 struct PastSpellingView_Previews: PreviewProvider {
     static var previews: some View {
-        PastSpellingView(spellingList: SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO"))
+        PastSpellingResultView(spellingList: .constant(SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")))
     }
 }
