@@ -46,6 +46,7 @@ struct PastSpellingResultView: View {
                                 Image(uiImage: UIImage(data: spellingList.pastResult!.image!.photo)!)
                                     .resizable()
                                     .scaledToFit()
+                                    .padding([.top, .bottom])
                             } else {
                                 Text("No Image of the test was provided!").font(.subheadline)
                             }
