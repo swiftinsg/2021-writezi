@@ -23,9 +23,12 @@ struct CheckAnswerView: View {
                 ZStack {
                     VStack(alignment: .center) {
                         Spacer()
-                        Text("\(spellingList.words[questionIndex].word)")
-                            .font(.system(size: 75))
-                            .bold()
+                        NavigationLink (destination: WordMeaningView(word: "\(spellingList.words[questionIndex].word)")){
+                            Text("\(spellingList.words[questionIndex].word)")
+                                .font(.system(size: 75))
+                                .bold()
+                                .foregroundColor(.black)
+                        }
                         Spacer()
                         HStack {
                             // Wrong button
