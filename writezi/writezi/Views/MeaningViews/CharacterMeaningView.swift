@@ -40,18 +40,20 @@ struct CharacterMeaningView: View {
             }
             .padding(.top)
             
-            Text(String(character))
-                .font(.title)
-                .padding(.top)
-            Text(String(character).pinyin)
-            
-            Text("Meaning")
-                .padding(.top)
-                .font(.title)
-            Text(HanZiUtils.getDictionaryEntryFor(character: character)?.definition ?? "No Meaning")
-            
-            Spacer()
-            
+            ScrollView {
+                Text(String(character))
+                    .font(.title)
+                    .padding(.top)
+                Text(String(character).pinyin)
+                
+                Text("Meaning")
+                    .padding(.top)
+                    .font(.title)
+                
+                Text(HanZiUtils.getDictionaryEntryFor(character: character)?.definition ?? "No Meaning").padding()
+                
+                Spacer()
+            }
         }
     }
 }
