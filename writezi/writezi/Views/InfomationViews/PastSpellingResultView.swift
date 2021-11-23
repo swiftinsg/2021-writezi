@@ -54,9 +54,7 @@ struct PastSpellingResultView: View {
                 }
             }
             .background(Color(.systemGroupedBackground))
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .navigationTitle("Previous Attempt")
-            .cornerRadius(10)
         }
         
     }
