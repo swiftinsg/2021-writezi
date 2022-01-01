@@ -23,8 +23,15 @@
 		25BCDBDA2749F5FB00518EB3 /* valid-characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 25BCDBD92749F5FB00518EB3 /* valid-characters.json */; };
 		25BCDBDD274A141600518EB3 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCDBDC274A141600518EB3 /* StringExtensions.swift */; };
 		25BCDBDF274A34F800518EB3 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BCDBDE274A34F800518EB3 /* StreamReader.swift */; };
+		2606A36E277DCF26008431BC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A36D277DCF26008431BC /* HomeView.swift */; };
+		2606A370277DD288008431BC /* SpellingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A36F277DD288008431BC /* SpellingListView.swift */; };
+		2606A372277DDD62008431BC /* CheckSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A371277DDD62008431BC /* CheckSpellingView.swift */; };
+		2606A374277DE12A008431BC /* SpellingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A373277DE12A008431BC /* SpellingTestView.swift */; };
+		2606A376277DE178008431BC /* WordDefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A375277DE178008431BC /* WordDefinitionView.swift */; };
+		2606A378277DE189008431BC /* WordAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2606A377277DE189008431BC /* WordAnimationView.swift */; };
 		2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9102747D15600F958F8 /* EncouragementMessages.swift */; };
 		2624D9152748E25100F958F8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624D9142748E25100F958F8 /* LoadingView.swift */; };
+		2627BBC72775C16B00F37291 /* AppUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627BBC62775C16B00F37291 /* AppUsage.swift */; };
 		263829582744AD2000CDA75B /* TestSpellingWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263829572744AD2000CDA75B /* TestSpellingWordView.swift */; };
 		26A8EB0827433EA30004FEAE /* NewSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB0727433EA30004FEAE /* NewSpellingView.swift */; };
 		26A8EB0A2743D5CF0004FEAE /* SpellingPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A8EB092743D5CE0004FEAE /* SpellingPreviewView.swift */; };
@@ -61,8 +68,15 @@
 		25BCDBD92749F5FB00518EB3 /* valid-characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "valid-characters.json"; sourceTree = "<group>"; };
 		25BCDBDC274A141600518EB3 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		25BCDBDE274A34F800518EB3 /* StreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
+		2606A36D277DCF26008431BC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2606A36F277DD288008431BC /* SpellingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingListView.swift; sourceTree = "<group>"; };
+		2606A371277DDD62008431BC /* CheckSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSpellingView.swift; sourceTree = "<group>"; };
+		2606A373277DE12A008431BC /* SpellingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingTestView.swift; sourceTree = "<group>"; };
+		2606A375277DE178008431BC /* WordDefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDefinitionView.swift; sourceTree = "<group>"; };
+		2606A377277DE189008431BC /* WordAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAnimationView.swift; sourceTree = "<group>"; };
 		2624D9102747D15600F958F8 /* EncouragementMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementMessages.swift; sourceTree = "<group>"; };
 		2624D9142748E25100F958F8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2627BBC62775C16B00F37291 /* AppUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsage.swift; sourceTree = "<group>"; };
 		263829572744AD2000CDA75B /* TestSpellingWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSpellingWordView.swift; sourceTree = "<group>"; };
 		26A8EB0727433EA30004FEAE /* NewSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpellingView.swift; sourceTree = "<group>"; };
 		26A8EB092743D5CE0004FEAE /* SpellingPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingPreviewView.swift; sourceTree = "<group>"; };
@@ -153,6 +167,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		2606A36C277DCEFF008431BC /* AppUsage */ = {
+			isa = PBXGroup;
+			children = (
+				2627BBC62775C16B00F37291 /* AppUsage.swift */,
+				2606A36D277DCF26008431BC /* HomeView.swift */,
+				2606A36F277DD288008431BC /* SpellingListView.swift */,
+				2606A373277DE12A008431BC /* SpellingTestView.swift */,
+				2606A375277DE178008431BC /* WordDefinitionView.swift */,
+				2606A377277DE189008431BC /* WordAnimationView.swift */,
+				2606A371277DDD62008431BC /* CheckSpellingView.swift */,
+			);
+			path = AppUsage;
+			sourceTree = "<group>";
+		};
 		3A2CB7E327493AE00074730D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				3A6E5EA7273BA943006F6AF1 /* ContentView.swift */,
+				2606A36C277DCEFF008431BC /* AppUsage */,
 				25207590274A8E7D002A77D5 /* SpellingMutationViews */,
 				25207593274A8ED7002A77D5 /* InfomationViews */,
 				25207591274A8E95002A77D5 /* TestViews */,
@@ -348,23 +377,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A6E5EA8273BA943006F6AF1 /* ContentView.swift in Sources */,
+				2606A36E277DCF26008431BC /* HomeView.swift in Sources */,
 				3AD02DA22745ED68001B1458 /* DataManager.swift in Sources */,
 				25A2D2CB274C337900332160 /* FinalScoreView.swift in Sources */,
 				25207589274A7117002A77D5 /* HanZiUtils.swift in Sources */,
 				25A9555F27493D0A002CD34A /* UIBezierPathExtensions.swift in Sources */,
 				25BCDBDD274A141600518EB3 /* StringExtensions.swift in Sources */,
+				2606A378277DE189008431BC /* WordAnimationView.swift in Sources */,
 				25BCDBDF274A34F800518EB3 /* StreamReader.swift in Sources */,
 				26B7158427476FCB00E35E1B /* ImagePicker.swift in Sources */,
 				26A959F9274522D400319126 /* PastSpellingResultView.swift in Sources */,
 				2624D9152748E25100F958F8 /* LoadingView.swift in Sources */,
+				2606A370277DD288008431BC /* SpellingListView.swift in Sources */,
 				26A959F72744E77100319126 /* CheckAnswerView.swift in Sources */,
 				2624D9112747D15600F958F8 /* EncouragementMessages.swift in Sources */,
+				2627BBC72775C16B00F37291 /* AppUsage.swift in Sources */,
+				2606A374277DE12A008431BC /* SpellingTestView.swift in Sources */,
 				25A9556327494AE8002CD34A /* CharacterMeaningView.swift in Sources */,
 				3AB46A7D273F55E4008AE14E /* Spelling.swift in Sources */,
 				25A9555D27493CE3002CD34A /* HanZiGraphic.swift in Sources */,
+				2606A376277DE178008431BC /* WordDefinitionView.swift in Sources */,
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
 				25A2D2CD274C724D00332160 /* OldFinalScoreView.swift in Sources */,
 				2520758D274A854E002A77D5 /* HanZiDictionaryEntry.swift in Sources */,
+				2606A372277DDD62008431BC /* CheckSpellingView.swift in Sources */,
 				26A8EB0A2743D5CF0004FEAE /* SpellingPreviewView.swift in Sources */,
 				25707B74274BBB9B00DAC85B /* TestSpellingView.swift in Sources */,
 				26A8EB0C2743E2920004FEAE /* WordMeaningView.swift in Sources */,

@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @State var searchText = ""
     @State var newSpellingList = false
+    @State var isFirstLaunch: Bool = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
     
     var body: some View {
         NavigationView{
@@ -48,8 +49,8 @@ struct ContentView: View {
                     ForEach($spellingLists) { $spellingList in
                         // Nav Link to preview of spelling list
                         if spellingList.name.contains(searchText) || searchText.isEmpty {
-                             NavigationLink (destination: SpellingPreviewView(spellingList: $spellingList)){
-                                 VStack(alignment: .leading) {
+                            NavigationLink (destination: SpellingPreviewView(spellingList: $spellingList)){
+                                VStack(alignment: .leading) {
                                     Text(spellingList.name)
                                         .bold()
                                     spellingList.pastResult?.dateOfResult == nil ?
@@ -81,6 +82,9 @@ struct ContentView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .sheet(isPresented: $newSpellingList){
                 NewSpellingView(spellingLists: $spellingLists)
+            }
+            .sheet(isPresented: $isFirstLaunch){
+                AppUsage()
             }
         }
     }
