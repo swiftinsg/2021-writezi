@@ -8,20 +8,8 @@
 import SwiftUI
 
 struct SpellingTestView: View {
-    
-    @Environment(\.presentationMode) var presentationMode
-    
     var body: some View {
         VStack {
-//            HStack{
-//                Spacer()
-//                Button{
-//                    presentationMode.wrappedValue.dismiss()
-//                } label: {
-//                    Text("Cancel")
-//                }
-//                .padding(.trailing)
-//            }
             Image("SpellingTestView")
                 .resizable()
                 .scaledToFit()

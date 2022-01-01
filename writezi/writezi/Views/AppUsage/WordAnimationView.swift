@@ -8,21 +8,8 @@
 import SwiftUI
 
 struct WordAnimationView: View {
-    
-    @Environment(\.presentationMode) var presentationMode
-
     var body: some View {
         VStack {
-//            HStack{
-//                Spacer()
-//                Button{
-//                    UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
-//                    presentationMode.wrappedValue.dismiss()
-//                } label: {
-//                    Text("Finish")
-//                }
-//                .padding(.trailing)
-//            }
             Image("WordAnimationView")
                 .resizable()
                 .scaledToFit()
