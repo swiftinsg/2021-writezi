@@ -96,7 +96,7 @@ struct TestSpellingWordView: View {
                             self.timer.upstream.connect().cancel()
                             spellingStage = .checking
                         } else {
-                            timeRemaining = 30
+                            timeRemaining = selectedTime
                             questionNo += 1
                         }
 
