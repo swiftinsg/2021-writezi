@@ -10,7 +10,7 @@ import SwiftUI
 struct AppUsage: View {
     
     @State var closeText = 0
-    @Environment(\.presentationMode) var presentationModeeee
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView{
@@ -34,11 +34,8 @@ struct AppUsage: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing, content:{
                     Button {
-                        if closeText == 5 {
-                            UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
-                        }
-                        presentationModeeee.wrappedValue.dismiss()
-                        print("dismiss")
+                        UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text((closeText == 5) ? "Finish" : "Cancel")
                     }

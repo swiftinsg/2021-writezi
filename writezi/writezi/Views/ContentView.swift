@@ -14,7 +14,7 @@ struct ContentView: View {
     
     @State var searchText = ""
     @State var newSpellingList = false
-    @State var isFirstLaunch: Bool = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
+    @State var launchHelp: Bool = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
     
     var body: some View {
         NavigationView{
@@ -64,6 +64,16 @@ struct ContentView: View {
                         spellingLists.remove(atOffsets: indexset)
                     }
                 }
+                HStack{
+                    Spacer()
+                    Button{
+                        launchHelp = true
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                            .font(.system(size: 20))
+                    }
+                    .padding()
+                }
                 
             }
             .background(Color(.systemGroupedBackground))
@@ -80,10 +90,12 @@ struct ContentView: View {
             }
             .navigationTitle(Text("Spelling"))
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-            .sheet(isPresented: $newSpellingList){
+            .sheet(isPresented: $newSpellingList, onDismiss: {
+                UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
+            }){
                 NewSpellingView(spellingLists: $spellingLists)
             }
-            .sheet(isPresented: $isFirstLaunch){
+            .sheet(isPresented: $launchHelp){
                 AppUsage()
             }
         }
