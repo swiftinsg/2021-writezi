@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @State var searchText = ""
     @State var newSpellingList = false
+    @State var newSpellingListID = UUID()
     @State var launchHelp: Bool = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
     
     var body: some View {
@@ -86,16 +87,20 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .id(newSpellingListID)
                 })
             }
             .navigationTitle(Text("Spelling"))
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .sheet(isPresented: $newSpellingList, onDismiss: {
-                UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
+                newSpellingListID = UUID()
+                print("true")
             }){
                 NewSpellingView(spellingLists: $spellingLists)
             }
-            .sheet(isPresented: $launchHelp){
+            .sheet(isPresented: $launchHelp, onDismiss: {
+                UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
+            }){
                 AppUsage()
             }
         }

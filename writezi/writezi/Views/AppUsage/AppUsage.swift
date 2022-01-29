@@ -34,7 +34,6 @@ struct AppUsage: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing, content:{
                     Button {
-                        UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text((closeText == 5) ? "Finish" : "Cancel")
