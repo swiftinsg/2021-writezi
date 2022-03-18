@@ -70,7 +70,7 @@ struct TestSpellingWordView: View {
                         if spellingMode == .hinted {
                             Text(spellingList.words[questionNo].word.pinyin)
                                 .foregroundColor(colourScheme == .light ? .black : .white)
-                                .font(.system(size: 60, weight: .heavy))
+                                .font(.system(size: 40, weight: .heavy))
                         }
                     }
                 }
@@ -159,6 +159,6 @@ struct TestSpellingWordView: View {
 
 struct TestSpellingWordView_Previews: PreviewProvider {
     static var previews: some View {
-        TestSpellingWordView(spellingList: .constant(SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")), spellingStage: .constant(.testing),spellingMode: .normal, selectedTime: 30, timeRemaining: 30)
+        TestSpellingWordView(spellingList: .constant(SpellingList(words: [SpellingWord(word: "你好")], name: "HALLO")), spellingStage: .constant(.testing),spellingMode: .hinted, selectedTime: 30, timeRemaining: 30)
     }
 }
