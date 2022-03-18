@@ -17,13 +17,15 @@ struct ContentView: View {
     @State var newSpellingListID = UUID()
     @State var launchHelp: Bool = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
     
+    @Environment(\.colorScheme) var colourScheme: ColorScheme
+    
     var body: some View {
         NavigationView{
             VStack {
                 // Search bar
                 ZStack {
                     Rectangle()
-                        .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+                        .foregroundColor(colourScheme == .light ? Color(red: 0.9, green: 0.9, blue: 0.9) : Color(red: 0.1, green: 0.1, blue: 0.1))
                     HStack {
                         Image(systemName: "magnifyingglass")
                         TextField("Search", text: $searchText)
@@ -109,7 +111,11 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(spellingLists: .constant([SpellingList(name: "Test List")]))
+        Group {
+            ContentView(spellingLists: .constant([SpellingList(name: "Test List")]), launchHelp: false)
+            ContentView(spellingLists: .constant([SpellingList(name: "Test List")]), launchHelp: false)
+                .previewInterfaceOrientation(.landscapeLeft)
+        }
     }
 }
 

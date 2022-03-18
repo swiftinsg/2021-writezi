@@ -20,6 +20,7 @@ struct TestSpellingWordView: View {
     @State var questionNo = 0
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colourScheme: ColorScheme
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -37,10 +38,8 @@ struct TestSpellingWordView: View {
                             .font(.largeTitle)
                             .cornerRadius(100.0)
                             .onReceive(timer) { time in
-                                print("timer")
                                 if self.timeRemaining > 0 {
                                     self.timeRemaining = timeRemaining - 1
-                                    print(timeRemaining)
                                 } else {
                                     if questionNo == spellingList.words.count - 1 {
                                         spellingStage = .checking
@@ -51,6 +50,7 @@ struct TestSpellingWordView: View {
                                 }
                             }
                             .padding(10.0)
+                            .foregroundColor(colourScheme == .light ? Color.white : Color.black)
                     }
                 }
                 Button{
@@ -63,13 +63,13 @@ struct TestSpellingWordView: View {
                     VStack{
                         Image(systemName: "speaker.wave.3.fill")
                             .imageScale(.large)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(colourScheme == .light ? Color.black : Color.white)
                             .font(.system(size: 100.0))
                             .padding()
 
                         if spellingMode == .hinted {
                             Text(spellingList.words[questionNo].word.pinyin)
-                                .foregroundColor(.black)
+                                .foregroundColor(colourScheme == .light ? .black : .white)
                                 .font(.system(size: 60, weight: .heavy))
                         }
                     }

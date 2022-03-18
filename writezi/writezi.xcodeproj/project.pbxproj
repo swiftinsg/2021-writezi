@@ -14,7 +14,6 @@
 		25207597274AC5D2002A77D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 25207596274AC5D2002A77D5 /* .swiftlint.yml */; };
 		25707B74274BBB9B00DAC85B /* TestSpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25707B73274BBB9B00DAC85B /* TestSpellingView.swift */; };
 		25A2D2CB274C337900332160 /* FinalScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A2D2CA274C337900332160 /* FinalScoreView.swift */; };
-		25A2D2CD274C724D00332160 /* OldFinalScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A2D2CC274C724D00332160 /* OldFinalScoreView.swift */; };
 		25A9555B27493CC8002CD34A /* HanZiAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555A27493CC8002CD34A /* HanZiAnimationView.swift */; };
 		25A9555D27493CE3002CD34A /* HanZiGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555C27493CE3002CD34A /* HanZiGraphic.swift */; };
 		25A9555F27493D0A002CD34A /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A9555E27493D0A002CD34A /* UIBezierPathExtensions.swift */; };
@@ -59,7 +58,6 @@
 		25207596274AC5D2002A77D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		25707B73274BBB9B00DAC85B /* TestSpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSpellingView.swift; sourceTree = "<group>"; };
 		25A2D2CA274C337900332160 /* FinalScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreView.swift; sourceTree = "<group>"; };
-		25A2D2CC274C724D00332160 /* OldFinalScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFinalScoreView.swift; sourceTree = "<group>"; };
 		25A9555A27493CC8002CD34A /* HanZiAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanZiAnimationView.swift; sourceTree = "<group>"; };
 		25A9555C27493CE3002CD34A /* HanZiGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanZiGraphic.swift; sourceTree = "<group>"; };
 		25A9555E27493D0A002CD34A /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				263829572744AD2000CDA75B /* TestSpellingWordView.swift */,
 				26A959F62744E77100319126 /* CheckAnswerView.swift */,
 				25A2D2CA274C337900332160 /* FinalScoreView.swift */,
-				25A2D2CC274C724D00332160 /* OldFinalScoreView.swift */,
 			);
 			path = TestViews;
 			sourceTree = "<group>";
@@ -398,7 +395,6 @@
 				25A9555D27493CE3002CD34A /* HanZiGraphic.swift in Sources */,
 				2606A376277DE178008431BC /* WordDefinitionView.swift in Sources */,
 				3A6E5EA6273BA943006F6AF1 /* writeziApp.swift in Sources */,
-				25A2D2CD274C724D00332160 /* OldFinalScoreView.swift in Sources */,
 				2520758D274A854E002A77D5 /* HanZiDictionaryEntry.swift in Sources */,
 				2606A372277DDD62008431BC /* CheckSpellingView.swift in Sources */,
 				26A8EB0A2743D5CF0004FEAE /* SpellingPreviewView.swift in Sources */,

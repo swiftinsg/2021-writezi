@@ -16,6 +16,7 @@ struct CheckAnswerView: View {
     @State var questionIndex = 0
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colourScheme: ColorScheme
     
     var body: some View {
         NavigationView {
@@ -27,7 +28,7 @@ struct CheckAnswerView: View {
                             Text("\(spellingList.words[questionIndex].word)")
                                 .font(.system(size: 75))
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(colourScheme == .light ? .black : .white)
                         }
                         Spacer()
                         HStack {

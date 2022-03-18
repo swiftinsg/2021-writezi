@@ -16,6 +16,7 @@ struct FinalScoreView: View {
     @State var image: Image?
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colourScheme
     
     var body: some View {
         NavigationView {
@@ -67,7 +68,7 @@ struct FinalScoreView: View {
                             Image(systemName: !wordResult.correct ? "xmark.circle.fill" : "circle")
                                 .foregroundColor(.red)
                         }.buttonStyle(BorderlessButtonStyle())
-                    }.listRowBackground(Color(.white))
+                    }.listRowBackground(colourScheme == .light ? Color("white") : Color(red: 0.1, green: 0.1, blue: 0.1))
                 }
             }
             .background(Color(.systemGroupedBackground))
