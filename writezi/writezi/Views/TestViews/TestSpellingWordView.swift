@@ -50,7 +50,7 @@ struct TestSpellingWordView: View {
                                 }
                             }
                             .padding(10.0)
-                            .foregroundColor(colourScheme == .light ? Color.white : Color.black)
+                            .foregroundColor(Color.black)
                     }
                 }
                 Button{
@@ -73,9 +73,17 @@ struct TestSpellingWordView: View {
                                 .font(.system(size: 60, weight: .heavy))
                         }
                     }
-                    .padding()
                 }
-
+                
+                VStack{
+                    Image(systemName: "info.circle.fill")
+                        .padding(2)
+                    Text("Tap the speaker button above to hear the word(s) and write the word(s) out on a piece of paper")
+                        .multilineTextAlignment(.center)
+                }
+                    .font(.system(size: 15))
+                    .frame(width: 300)
+                    .foregroundColor(colourScheme == .light ? .gray : Color(red: 0.7, green: 0.7, blue: 0.7))
                 Spacer()
                 HStack{
                     if questionNo > 0 && spellingMode != .timed {
